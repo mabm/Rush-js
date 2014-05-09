@@ -5,7 +5,7 @@
 ## Login   <nicolas@epitech.net>
 ## 
 ## Started on  Sat May 10 13:21:17 2014 Nicolas Ades
-## Last update Sat May 10 13:24:13 2014 Nicolas Ades
+## Last update Sat May 10 15:03:20 2014 Laurent Fourrier
 ##
 
 SRC	=	src/main.c
@@ -18,18 +18,23 @@ CC	=	gcc
 
 RM	=	rm -f
 
-CFLAGS	+=	-W -Wall -Wextra -Werror -pedantic -ansi -I.
+CFLAGS	+=	-W -Wall -Wextra -Werror -pedantic -ansi -iquoteinclude
 
-all	:	$(NAME)
+all	:	libs $(NAME)
+
+libs	:
+		cd lib/tlist && make
 
 $(NAME)	:	$(OBJ)
 		$(CC) -o $(NAME) $(OBJ)
 
 clean	:
 		$(RM) $(OBJ)
+		cd lib/tlist && make clean
 
 fclean	:	clean
 		$(RM) $(NAME)
+		cd lib/tlist && make fclean
 
 re	:	fclean all
 
