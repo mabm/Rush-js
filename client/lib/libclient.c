@@ -5,9 +5,16 @@
 ** Login   <jobertomeu@epitech.net>
 ** 
 ** Started on  Sat May 10 15:21:44 2014 Joris Bertomeu
-** Last update Sat May 10 16:49:41 2014 Joris Bertomeu
+** Last update Sat May 10 21:54:44 2014 
 */
 
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <arpa/inet.h>
+#include <string.h>
 #include "libclient.h"
 
 void	print_error_lib(char *str)
