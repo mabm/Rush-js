@@ -1,0 +1,96 @@
+/*
+** parser.h for parser in /home/merran_g/work/c_elem/rush2
+**
+** Made by Geoffrey Merran
+** Login   <merran_g@epitech.net>
+**
+** Started on  Sat May 10 12:14:15 2014 Geoffrey Merran
+** Last update Sun May 11 01:02:02 2014 Geoffrey Merran
+*/
+
+#ifndef PARSER_
+# define PARSER_
+# define EDITOR_USAGE "Usage : ./epic_editor\n"
+# define WIN_X 800
+# define WIN_Y 600
+# include <sys/types.h>
+# include <sys/stat.h>
+# include <fcntl.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <unistd.h>
+# include <string.h>
+# include <gtk/gtk.h>
+# include "editor.h"
+# include "my.h"
+
+/*
+** Editor
+*/
+
+extern t_game	*game;
+
+typedef struct	s_winMap
+{
+  GtkWidget	*mainWindow;
+  GtkWidget	*labelWin[2];
+  GtkWidget	*tableWin;
+  GtkWidget	*nextButton;
+  GtkWidget	*mapEntry;
+}		t_winMap;
+
+typedef struct	s_winMonster
+{
+  GtkWidget	*mainWindow;
+  GtkWidget	*labelWin[8];
+  GtkWidget	*tableWin;
+  GtkWidget	*winButton[2];
+  GtkWidget	*attEntry[7];
+}		t_winMonster;
+
+typedef struct	s_winChampion
+{
+  GtkWidget	*mainWindow;
+  GtkWidget	*labelWin[9];
+  GtkWidget	*tableWin;
+  GtkWidget	*winButton[2];
+  GtkWidget	*attEntry[8];
+}		t_winChampion;
+
+typedef struct	s_winRoom
+{
+  GtkWidget	*mainWindow;
+  GtkWidget	*labelWin[5];
+  GtkWidget	*tableWin;
+  GtkWidget	*winButton[2];
+  GtkWidget	*attEntry[4];
+}		t_winRoom;
+
+void	launch_editor();
+void	create_window(GtkWidget *mainWindow);
+void	create_winmonster(GtkWidget *mainWindow);
+void   	create_winroom(GtkWidget *mainWindow);
+void	create_winchampion(GtkWidget *mainWindow);
+void   	init_window(GtkWidget **mainWindow);
+
+/*
+** Write in file
+*/
+
+int	create_file(char *name);
+void	write_header(int fd, t_header *header);
+void	write_champ(int fd, t_champ *champ);
+void	write_string(int fd, char *str);
+void	write_number(int fd, int nb);
+void	write_room(int fd, t_room *room);
+void	write_monster(int fd, t_monster *monster);
+void	write_attribut(int fd, char att);
+
+/*
+** Xfunction
+*/
+
+int	xopen(const char *pathname, int flags, mode_t mode);
+void	my_error(char *error);
+
+#endif /* PARSER_ */
