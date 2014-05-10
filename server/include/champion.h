@@ -5,11 +5,13 @@
 ** Login   <fourri_l@epitech.net>
 ** 
 ** Started on  Sat May 10 13:45:01 2014 Laurent Fourrier
-** Last update Sat May 10 13:53:07 2014 Laurent Fourrier
+** Last update Sat May 10 14:39:23 2014 Laurent Fourrier
 */
 
 #ifndef CHAMPION_H_
 # define CHAMPION_H_
+
+# include "item.h"
 
 typedef enum	e_class
   {
@@ -23,9 +25,9 @@ typedef struct	s_champion
   int		mana;
   int		speed;
   int		damage;
-  /* weapon ? */
-  /* armor ? */
   t_class	class;
+  t_armor	armor;
+  t_weapon	weapon;
 }		t_champion;
 
 #endif
