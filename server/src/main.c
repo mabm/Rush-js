@@ -5,8 +5,11 @@
 ** Login   <nicolas@epitech.net>
 ** 
 ** Started on  Sat May 10 13:24:57 2014 Nicolas Ades
-** Last update Sat May 10 14:07:40 2014 Nicolas Ades
+** Last update Sat May 10 19:44:33 2014 Laurent Fourrier
 */
+
+#include <stdio.h>
+#include "map_parser.h"
 
 int	main(int ac, char **av)
 {
@@ -16,6 +19,6 @@ int	main(int ac, char **av)
       return (-1);
     }
   else
-    pars_map(av[1]);
+    parse_map(av[1]);
   return (0);
 }

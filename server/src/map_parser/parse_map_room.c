@@ -5,12 +5,13 @@
 ** Login   <fourri_l@epitech.net>
 ** 
 ** Started on  Sat May 10 16:22:45 2014 Laurent Fourrier
-** Last update Sat May 10 19:21:26 2014 Laurent Fourrier
+** Last update Sat May 10 19:50:43 2014 Laurent Fourrier
 */
 
 #include <stdlib.h>
 #include "world.h"
 #include "utils.h"
+#include "room.h"
 
 int		parse_map_room(t_world *world, char *line)
 {
@@ -33,5 +34,6 @@ int		parse_map_room(t_world *world, char *line)
   buf = read_string(line + it);
   rtn->monster = str_to_wordarr(buf, "=");
   free(buf);
-  return (rtn);
+  world->rooms = tl_add(world->rooms, rtn);
+  return (1);
 }

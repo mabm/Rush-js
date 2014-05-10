@@ -5,11 +5,11 @@
 ** Login   <nicolas@epitech.net>
 ** 
 ** Started on  Sat May 10 15:58:21 2014 Nicolas Ades
-** Last update Sat May 10 19:18:05 2014 Nicolas Ades
+** Last update Sat May 10 19:50:53 2014 Laurent Fourrier
 */
 
 #include "world.h"
-#include "map_parser"
+#include "map_parser.h"
 
 char		*auto_complete(char *dest, char *line, int i);
 {

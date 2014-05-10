@@ -5,13 +5,14 @@
 ** Login   <fourri_l@epitech.net>
 ** 
 ** Started on  Sat May 10 19:16:01 2014 Laurent Fourrier
-** Last update Sat May 10 19:38:02 2014 Laurent Fourrier
+** Last update Sat May 10 19:48:41 2014 Laurent Fourrier
 */
 
 #include <stdlib.h>
 #include <string.h>
 #include "world.h"
 #include "utils.h"
+#include "champion.h"
 
 static t_class	get_class(char *line)
 {
@@ -19,13 +20,13 @@ static t_class	get_class(char *line)
 
   line = read_string(line);
   if (strcmp(line, "WARRIOR") == 0)
-    rtn = t_class.WARRIOR;
+    rtn = WARRIOR;
   else if (strcmp(line, "WIZARD") == 0)
-    rtn = t_class.WIZARD;
+    rtn = WIZARD;
   else if (strcmp(line, "TEMPLAR") == 0)
-    rtn = t_class.TEMPLAR;
+    rtn = TEMPLAR;
   else
-    rtn = t_class.WARRIOR;
+    rtn = WARRIOR;
   free(line);
   return (rtn);
 }
@@ -41,12 +42,12 @@ static int	get_int(char *line)
   return (rtn);
 }
 
-int		parse_map_monster(t_world *world, char *line)
+int		parse_map_champ(t_world *world, char *line)
 {
   int		it;
-  t_monster	*rtn;
+  t_champion	*rtn;
 
-  rtn = malloc(sizeof(t_monster));
+  rtn = malloc(sizeof(t_champion));
   if (!rtn)
     exit(0);
   it = 2;
@@ -65,5 +66,6 @@ int		parse_map_monster(t_world *world, char *line)
   rtn->weapon = read_string(line + it);
   it += line[it] + 2;
   rtn->armor = read_string(line + it);
-  return (rtn);
+  world->champions = tl_add(world->champions, rtn);
+  return (1);
 }

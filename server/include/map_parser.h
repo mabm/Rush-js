@@ -5,7 +5,7 @@
 ** Login   <fourri_l@epitech.net>
 **
 ** Started on  Sat May 10 15:37:28 2014 Laurent Fourrier
-** Last update Sat May 10 03:11:04 2014 Valerian Polizzi
+** Last update Sat May 10 19:43:15 2014 Laurent Fourrier
 */
 
 #ifndef MAP_PARSER_H_
@@ -14,6 +14,7 @@
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <fcntl.h>
+# include "world.h"
 
 t_world	parse_map(char *file);
 
