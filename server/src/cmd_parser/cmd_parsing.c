@@ -5,13 +5,13 @@
 ** Login   <valer@epitech.net>
 **
 ** Started on  Fri May  9 22:31:21 2014 Valerian Polizzi
-** Last update Sat May 10 01:55:08 2014 Valerian Polizzi
+** Last update Sat May 10 03:15:43 2014 Valerian Polizzi
 */
 
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-#include "parsing.h"
+#include "../../include/parsing.h"
 
 char		*get_opt(char *cmd)
 {
@@ -57,5 +57,5 @@ int	       parse_cmd(char *cmd)
   tab[5] = NULL;
   while (check_cmd(tab[++i], cmd) != 0);
   fonc_tab[i](get_opt(cmd));
-  return (-1);
+  return (0);
 }
