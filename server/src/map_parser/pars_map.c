@@ -5,50 +5,56 @@
 ** Login   <nicolas@epitech.net>
 ** 
 ** Started on  Sat May 10 15:58:21 2014 Nicolas Ades
-** Last update Sat May 10 17:24:33 2014 Nicolas Ades
+** Last update Sat May 10 19:18:05 2014 Nicolas Ades
 */
 
 #include "world.h"
 #include "map_parser"
 
-int		pars_map_header(t_world *world, int fd)
+char		*auto_complete(char *dest, char *line, int i);
 {
-  int		ret;
-  char		buff[1024];
-  
-  bzero(buff, 1024);
-  if ((ret = read(fd, buff, 1024)) == -1)
+  dest = malloc(line[i] + 1);
+  i += 1;
+  dest = strncpy(dest, &line[i], line[i - 1]);
+  dest[(line[i - 1] + 1)] = '\0';
+  return (dest);
+}
+
+int		pars_map_header(t_world *world, char *line)
+{
+  int		i;
+
+  i = 0;
+  if (line[i] != 123)
     {
-      printf("Error with read\n");
+      printf("Error: Unrecognize file\n");
       exit(-1);
     }
-  world->game_name = malloc(buff[4]);
-  world->game_name = strncpy(world->game_name, &buff[5], buff[4]);
-  world->start_room = malloc();
-  world->start_room = 
-  return (0);
+  i += 4;
+  world->game_name = auto_complete(world->game_name, line, i);
+  i += line[i];
+  i += 2;
+  world->end_room = auto_complete(world->end_room, line, i);
+  i += line[i];
+  i += 2;
+  world->start_room = auto_complete(world->start_room, line, i);
+  return (1);
 }
 
 t_world		pars_map(char *file)
 {
   t_world	*world;
-  char		buff[1024];
-  int		fd;
-  int		ret;
+  int		*fd;
+  char		**info;
 
-  fd = open(file, O_RDONLY);
-  bzero(buff, 1024);
-  if ((ret = read(fd, buff, 1)) == -1)
+  if ((fd = open(file, O_RDONLY)) == -1)
     {
-      printf("Error with read\n");
+      printf("Error with fopen in pars_map\n");
       exit(-1);
     }
-  if (buff[0] == 123)
-    pars_map_header(world, fd);
-  else
-    {
-      printf("Error: Unrecognize file\n");
-      exit(-1);
-    }
+  while ((info[i] = get_next_line(fd)) != NULL)
+    i++;
+  fclose(fd);
+  pars_map_header(world, info[0]);
   return (world);
 }
