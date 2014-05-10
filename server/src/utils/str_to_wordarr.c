@@ -5,7 +5,7 @@
 ** Login   <fourri_l@epitech.net>
 ** 
 ** Started on  Sat May 10 16:58:49 2014 Laurent Fourrier
-** Last update Sat May 10 17:05:43 2014 Laurent Fourrier
+** Last update Sat May 10 18:19:04 2014 Laurent Fourrier
 */
 
 #include <stdlib.h>
@@ -49,5 +49,8 @@ char		**str_to_wordarr(char *str, char *seps)
   if (!rtn)
     return (NULL);
   it = 0;
-  while 
+  while ((rtn[it++] = strtok(str, seps)) != NULL)
+    str = NULL;
+  rtn[it] = NULL;
+  return (rtn);
 }

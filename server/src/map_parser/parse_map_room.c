@@ -5,7 +5,7 @@
 ** Login   <fourri_l@epitech.net>
 ** 
 ** Started on  Sat May 10 16:22:45 2014 Laurent Fourrier
-** Last update Sat May 10 17:19:23 2014 Laurent Fourrier
+** Last update Sat May 10 18:29:23 2014 Laurent Fourrier
 */
 
 #include <unistd.h>
@@ -46,7 +46,24 @@ static int	parse_map_room_adv(t_room *room, int fd)
 
 static int	parse_map_room_connection(t_room *room, int fd)
 {
+  char		*buf;
 
+  buf = read_string(fd);
+  if (!buf)
+    return (0);
+  room->links = str_to_wordarr(buf, "=");
+  return (1);
+}
+
+static int	parse_map_room_monster(t_room *room, int fd)
+{
+  char		*buf;
+
+  buf = read_string(fd);
+  if (!buf)
+    return (0);
+  room->monster = str_to_wordarr(buf, "=");
+  return (1);
 }
 
 int		parse_map_room(t_world *world, int fd)
@@ -57,9 +74,13 @@ int		parse_map_room(t_world *world, int fd)
   room = malloc(sizeof(room));
   if (!room)
     exit(0);
-  while (read(fd, &byte, 1) < 1)
+  while (read(fd, &byte, 1) < 1 && byte != '\n')
     {
-      
+      while (g_parsemapfunc[it].byte == byte)
+	{
+	  if /* TODO */
+	  it++;
+	}
     }
-  return (1);
+  return (0);
 }
