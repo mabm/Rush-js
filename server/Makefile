@@ -5,7 +5,7 @@
 ## Login   <nicolas@epitech.net>
 ## 
 ## Started on  Sat May 10 13:21:17 2014 Nicolas Ades
-## Last update Sat May 10 20:37:25 2014 Jeremy Mediavilla
+## Last update Sat May 10 21:11:26 2014 Jeremy Mediavilla
 ##
 
 SRC	=	src/main.c				\
@@ -29,7 +29,7 @@ CC	=	gcc
 
 RM	=	rm -f
 
-CFLAGS	+=	-W -Wall -Wextra -Werror -pedantic -ansi -iquoteinclude \
+CFLAGS	+=	-W -Wall -Wextra -Werror -pedantic -ansi -g3 -iquoteinclude \
 		-Ilib/tlist/include
 
 LDFLAGS +=	-Llib/tlist/ -ltlist \

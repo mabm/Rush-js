@@ -5,7 +5,7 @@
 ** Login   <nicolas@epitech.net>
 ** 
 ** Started on  Sat May 10 15:58:21 2014 Nicolas Ades
-** Last update Sat May 10 20:59:07 2014 Nicolas Ades
+** Last update Sat May 10 21:15:37 2014 Jeremy Mediavilla
 */
 
 #include "world.h"
@@ -14,7 +14,7 @@
 
 char		*auto_complete(char *dest, char *line, int i)
 {
-  dest = malloc(line[i] + 1);
+  dest = malloc(line[i] + 2);
   i += 1;
   dest = strncpy(dest, &line[i], line[i - 1]);
   dest[(line[i - 1] + 1)] = '\0';
@@ -58,7 +58,7 @@ t_world		parse_map(char *file)
     }
   while ((info[i] = get_next_line(fd)) != NULL)
     i++;
-  info[100] = NULL;
+  info[99] = NULL;
   close(fd);
   pars_map_header(&world, info[0]);
   printf("name : %s\n", world.game_name);
