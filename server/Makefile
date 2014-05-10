@@ -5,7 +5,7 @@
 ## Login   <nicolas@epitech.net>
 ## 
 ## Started on  Sat May 10 13:21:17 2014 Nicolas Ades
-## Last update Sat May 10 20:34:14 2014 Laurent Fourrier
+## Last update Sat May 10 20:37:25 2014 Jeremy Mediavilla
 ##
 
 SRC	=	src/main.c				\
@@ -16,6 +16,7 @@ SRC	=	src/main.c				\
 		src/map_parser/gnl.c			\
 		src/map_parser/parse_map_room.c		\
 		src/map_parser/pars_map.c		\
+		src/map_parser/parse_monsters.c		\
 		src/utils/read_string.c			\
 		src/utils/str_to_wordarr.c
 

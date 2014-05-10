@@ -5,7 +5,7 @@
 ** Login   <fourri_l@epitech.net>
 ** 
 ** Started on  Sat May 10 13:40:45 2014 Laurent Fourrier
-** Last update Sat May 10 19:45:03 2014 Jeremy Mediavilla
+** Last update Sat May 10 20:39:54 2014 Jeremy Mediavilla
 */
 
 #ifndef MONSTER_H_
@@ -13,7 +13,7 @@
 
 # include "item.h"
 
-typedef struct	s_monster
+typedef struct	s_monsters
 {
   char		*type;
   int		hp;
@@ -22,6 +22,6 @@ typedef struct	s_monster
   int		damage;
   char		*armor;
   char		*weapon;
-}		t_monster;
+}		t_monsters;
 
 #endif
