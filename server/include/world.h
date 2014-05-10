@@ -5,7 +5,7 @@
 ** Login   <fourri_l@epitech.net>
 ** 
 ** Started on  Sat May 10 13:33:22 2014 Laurent Fourrier
-** Last update Sat May 10 13:40:26 2014 Laurent Fourrier
+** Last update Sat May 10 14:40:19 2014 Laurent Fourrier
 */
 
 #ifndef WORLD_H_
@@ -13,13 +13,11 @@
 
 # include <tlist.h>
 
-# include "room.h"
-# include "monster.h"
-# include "champion.h"
-
 typedef struct	s_world
 {
   t_list	*rooms;
+  t_list	*armors;
+  t_list	*weapons;
   t_list	*monsters;
   t_list	*champions;
 }		t_world;
