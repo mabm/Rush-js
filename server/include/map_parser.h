@@ -1,11 +1,11 @@
 /*
 ** map_parser.h for rush-js in /home/fourri_l/rendu/Rush-js/server
-** 
+**
 ** Made by Laurent Fourrier
 ** Login   <fourri_l@epitech.net>
-** 
+**
 ** Started on  Sat May 10 15:37:28 2014 Laurent Fourrier
-** Last update Sat May 10 18:37:24 2014 Nicolas Ades
+** Last update Sat May 10 03:11:04 2014 Valerian Polizzi
 */
 
 #ifndef MAP_PARSER_H_

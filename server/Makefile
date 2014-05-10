@@ -5,10 +5,13 @@
 ## Login   <nicolas@epitech.net>
 ## 
 ## Started on  Sat May 10 13:21:17 2014 Nicolas Ades
-## Last update Sat May 10 15:03:20 2014 Laurent Fourrier
+## Last update Sat May 10 03:15:01 2014 Valerian Polizzi
 ##
 
-SRC	=	src/main.c
+SRC	=	src/main.c			\
+		krc/cmd_parser/cmd_parser.c	\
+		src/cmd_parser/commands.c	\
+
 
 OBJ	=	$(SRC:.c=.o)
 
