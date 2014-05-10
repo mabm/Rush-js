@@ -5,14 +5,14 @@
 ** Login   <mediav_j@epitech.net>
 ** 
 ** Started on  Sat May 10 19:06:33 2014 Jeremy Mediavilla
-** Last update Sat May 10 20:52:16 2014 Jeremy Mediavilla
+** Last update Sat May 10 22:05:40 2014 Jeremy Mediavilla
 */
 
 #include "world.h"
 #include "map_parser.h"
 #include "monster.h"
 
-int		get_monster_name(t_world *world, char *line)
+int		get_monster_name(t_monsters *monsters, char *line)
 {
   int		len;
   char		*name;
@@ -29,7 +29,7 @@ int		get_monster_name(t_world *world, char *line)
       name[i] = line[j];
       i++;
     }
-  world->monsters->type = name;
+  monsters->type = name;
   return (len + 3);
 }
 
@@ -80,31 +80,34 @@ char		*get_monster_w_a(char *line, int *i)
   return (name);
 }
 
-void		aff_monsters(t_world *world)
+void		aff_monsters(t_monsters *monsters)
 {
   printf("\nINFO MONSTRE :\n");
-  printf("type : %s\n", world->monsters->type);
-  printf("hp : %i\n", world->monsters->hp);
-  printf("mana : %i\n", world->monsters->mana);
-  printf("speed : %i\n", world->monsters->speed);
-  printf("damage : %i\n", world->monsters->damage);
-  printf("armor : %s\n", world->monsters->armor);
-  printf("weapon : %s\n", world->monsters->weapon);
+  printf("type : %s\n", monsters->type);
+  printf("hp : %i\n", monsters->hp);
+  printf("mana : %i\n", monsters->mana);
+  printf("speed : %i\n", monsters->speed);
+  printf("damage : %i\n", monsters->damage);
+  printf("armor : %s\n", monsters->armor);
+  printf("weapon : %s\n", monsters->weapon);
 }
 
 int		parse_map_monster(t_world *world, char *line)
 {
   int		i;
+  t_monsters	*monster;
 
   /* contacter mediav au moment des tests de cette fonction */
 
-  i = get_monster_name(world, line);
-  world->monsters->hp = get_monster_val(line, &i);
-  world->monsters->mana = get_monster_val(line, &i);
-  world->monsters->speed = get_monster_val(line, &i);
-  world->monsters->damage = get_monster_val(line, &i);
-  world->monsters->weapon = get_monster_w_a(line, &i);
-  world->monsters->armor =get_monster_w_a(line, &i);
-  aff_monsters(world);
+  monster = malloc(sizeof(t_monsters));
+  i = get_monster_name(monster, line);
+  monster->hp = get_monster_val(line, &i);
+  monster->mana = get_monster_val(line, &i);
+  monster->speed = get_monster_val(line, &i);
+  monster->damage = get_monster_val(line, &i);
+  monster->weapon = get_monster_w_a(line, &i);
+  monster->armor =get_monster_w_a(line, &i);
+  aff_monsters(monster);
+  world->monsters = tl_add(world->monsters, monster);
   return (1);
 }

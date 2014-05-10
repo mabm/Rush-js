@@ -5,7 +5,7 @@
 ** Login   <fourri_l@epitech.net>
 ** 
 ** Started on  Sat May 10 16:58:49 2014 Laurent Fourrier
-** Last update Sat May 10 20:30:06 2014 Laurent Fourrier
+** Last update Sat May 10 22:04:28 2014 Jeremy Mediavilla
 */
 
 #include <stdlib.h>
@@ -36,6 +36,7 @@ static int	get_wordarr_len(char *str, char *seps)
 	  if (in_word)
 	    rtn++;
 	}
+      str++;
     }
   return (rtn);
 }
