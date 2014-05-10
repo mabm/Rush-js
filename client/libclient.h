@@ -5,7 +5,7 @@
 ** Login   <jobertomeu@epitech.net>
 ** 
 ** Started on  Sat May 10 15:44:42 2014 Joris Bertomeu
-** Last update Sat May 10 16:22:38 2014 Joris Bertomeu
+** Last update Sat May 10 16:49:58 2014 Joris Bertomeu
 */
 
 #ifndef LIBCLIENT_H_
@@ -32,8 +32,8 @@ struct s_libclient
   int			flag;
 };
 
-void	send_str(char *str, char *ip);
-void	init_lib(t_libclient *slib, char *ip);
+void	send_str(char *str, char *ip, int port);
+void	init_lib(t_libclient *slib, char *ip, int port);
 void	check_hostaddr(t_libclient *slib, char *ip);
 void	print_error_lib(char *str);
 

@@ -5,7 +5,7 @@
 ** Login   <jobertomeu@epitech.net>
 ** 
 ** Started on  Sat May 10 15:21:44 2014 Joris Bertomeu
-** Last update Sat May 10 16:30:19 2014 Joris Bertomeu
+** Last update Sat May 10 16:49:41 2014 Joris Bertomeu
 */
 
 #include "libclient.h"
@@ -31,13 +31,13 @@ void	check_hostaddr(t_libclient *slib, char *ip)
 	slib->serverhostent->h_length);
 }
 
-void	init_lib(t_libclient *slib, char *ip)
+void	init_lib(t_libclient *slib, char *ip, int port)
 {
   slib->to_server_socket = -1;
   memset(&(slib->serversockaddr), 0, sizeof (slib->serversockaddr));
   slib->hostaddr = inet_addr(ip);
   check_hostaddr(slib, ip);
-  slib->serversockaddr.sin_port = htons(21);
+  slib->serversockaddr.sin_port = htons(port);
   slib->serversockaddr.sin_family = AF_INET;
   if ((slib->to_server_socket = socket(AF_INET, SOCK_STREAM, 0)) < 0)
     print_error_lib("Socket creation failed\n");
@@ -47,12 +47,12 @@ void	init_lib(t_libclient *slib, char *ip)
     print_error_lib("Connection request failed\n");
 }
 
-void	send_str(char *str, char *ip)
+void	send_str(char *str, char *ip, int port)
 {
   t_libclient	*slib;
 
   slib = malloc(sizeof (*slib));
-  init_lib(slib, ip);
+  init_lib(slib, ip, port);
   slib->flag = 1;
 
   write(slib->to_server_socket, str, strlen(str));
