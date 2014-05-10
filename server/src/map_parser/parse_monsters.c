@@ -5,7 +5,7 @@
 ** Login   <mediav_j@epitech.net>
 ** 
 ** Started on  Sat May 10 19:06:33 2014 Jeremy Mediavilla
-** Last update Sat May 10 22:05:40 2014 Jeremy Mediavilla
+** Last update Sat May 10 22:11:41 2014 Jeremy Mediavilla
 */
 
 #include "world.h"
@@ -27,6 +27,7 @@ int		get_monster_name(t_monsters *monsters, char *line)
   while (i <= (len - 1))
     {
       name[i] = line[j];
+      j++;
       i++;
     }
   monsters->type = name;
@@ -51,7 +52,6 @@ int		get_monster_val(char *line, int *i)
       (*i)++;
       j++;
     }
-  /* surement qu'il faut faire   (*i)++; ici*/
   return (atoi(nb));
 }
 
@@ -62,21 +62,18 @@ char		*get_monster_w_a(char *line, int *i)
   int		j;
 
   j = 0;
-
-  /* la ligne d'en dessous peu faire de la merde */
-
   (*i)++;
   len = line[*i];
   (*i)++;
   name = malloc((len + 1) * sizeof(char));
   memset(name, '\0', (len + 1));
-  while (j < (len - 1));
+  while (j < (len - 0))
   {
     name[j] = line[*i];
     (*i)++;
     j++;
   }
-  /* surement qu'il faut faire   (*i)++; ici*/
+  (*i)++;
   return (name);
 }
 
@@ -97,8 +94,6 @@ int		parse_map_monster(t_world *world, char *line)
   int		i;
   t_monsters	*monster;
 
-  /* contacter mediav au moment des tests de cette fonction */
-
   monster = malloc(sizeof(t_monsters));
   i = get_monster_name(monster, line);
   monster->hp = get_monster_val(line, &i);
@@ -106,6 +101,7 @@ int		parse_map_monster(t_world *world, char *line)
   monster->speed = get_monster_val(line, &i);
   monster->damage = get_monster_val(line, &i);
   monster->weapon = get_monster_w_a(line, &i);
+  i--;
   monster->armor =get_monster_w_a(line, &i);
   aff_monsters(monster);
   world->monsters = tl_add(world->monsters, monster);
