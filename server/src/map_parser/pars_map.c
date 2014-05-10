@@ -5,7 +5,7 @@
 ** Login   <nicolas@epitech.net>
 ** 
 ** Started on  Sat May 10 15:58:21 2014 Nicolas Ades
-** Last update Sat May 10 20:56:29 2014 Nicolas Ades
+** Last update Sat May 10 20:59:07 2014 Nicolas Ades
 */
 
 #include "world.h"
@@ -61,5 +61,8 @@ t_world		parse_map(char *file)
   info[100] = NULL;
   close(fd);
   pars_map_header(&world, info[0]);
+  printf("name : %s\n", world.game_name);
+  printf("start : %s\n", world.start_room);
+  printf("end : %s\n", world.end_room);
   return (world);
 }
