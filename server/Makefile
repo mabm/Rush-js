@@ -5,7 +5,7 @@
 ## Login   <nicolas@epitech.net>
 ## 
 ## Started on  Sat May 10 13:21:17 2014 Nicolas Ades
-## Last update Sat May 10 21:11:26 2014 Jeremy Mediavilla
+## Last update Sat May 10 21:44:21 2014 Laurent Fourrier
 ##
 
 SRC	=	src/main.c				\
@@ -18,14 +18,15 @@ SRC	=	src/main.c				\
 		src/map_parser/pars_map.c		\
 		src/map_parser/parse_monsters.c		\
 		src/utils/read_string.c			\
-		src/utils/str_to_wordarr.c
+		src/utils/str_to_wordarr.c		\
+		src/world/init_world.c
 
 
 OBJ	=	$(SRC:.c=.o)
 
 NAME	=	server
 
-CC	=	gcc
+CC	=	gcc -g
 
 RM	=	rm -f
 

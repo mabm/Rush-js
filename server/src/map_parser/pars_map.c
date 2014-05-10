@@ -5,7 +5,7 @@
 ** Login   <nicolas@epitech.net>
 ** 
 ** Started on  Sat May 10 15:58:21 2014 Nicolas Ades
-** Last update Sat May 10 21:15:37 2014 Jeremy Mediavilla
+** Last update Sat May 10 21:43:59 2014 Laurent Fourrier
 */
 
 #include "world.h"
@@ -50,6 +50,7 @@ t_world		parse_map(char *file)
   char		**info;
 
   i = 0;
+  world = init_world();
   info = malloc(100 * sizeof(*info));
   if ((fd = open(file, O_RDONLY)) == -1)
     {
@@ -61,6 +62,9 @@ t_world		parse_map(char *file)
   info[99] = NULL;
   close(fd);
   pars_map_header(&world, info[0]);
+  i = 0;
+  while (info[i])
+    parse_map_elem(&world, info[i++]);
   printf("name : %s\n", world.game_name);
   printf("start : %s\n", world.start_room);
   printf("end : %s\n", world.end_room);
