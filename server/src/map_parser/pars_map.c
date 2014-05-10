@@ -5,13 +5,14 @@
 ** Login   <nicolas@epitech.net>
 ** 
 ** Started on  Sat May 10 15:58:21 2014 Nicolas Ades
-** Last update Sat May 10 19:50:53 2014 Laurent Fourrier
+** Last update Sat May 10 20:20:36 2014 Nicolas Ades
 */
 
 #include "world.h"
+#include "gnl.h"
 #include "map_parser.h"
 
-char		*auto_complete(char *dest, char *line, int i);
+char		*auto_complete(char *dest, char *line, int i)
 {
   dest = malloc(line[i] + 1);
   i += 1;
@@ -43,10 +44,13 @@ int		pars_map_header(t_world *world, char *line)
 
 t_world		pars_map(char *file)
 {
-  t_world	*world;
-  int		*fd;
+  t_world	world;
+  int		i;
+  int		fd;
   char		**info;
 
+  i = 0;
+  info = malloc(100 * sizeof(*info));
   if ((fd = open(file, O_RDONLY)) == -1)
     {
       printf("Error with fopen in pars_map\n");
@@ -54,7 +58,7 @@ t_world		pars_map(char *file)
     }
   while ((info[i] = get_next_line(fd)) != NULL)
     i++;
-  fclose(fd);
-  pars_map_header(world, info[0]);
+  close(fd);
+  pars_map_header(&world, info[0]);
   return (world);
 }

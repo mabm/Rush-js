@@ -5,7 +5,7 @@
 ** Login   <fourri_l@epitech.net>
 **
 ** Started on  Sat May 10 15:37:28 2014 Laurent Fourrier
-** Last update Sat May 10 19:43:15 2014 Laurent Fourrier
+** Last update Sat May 10 20:15:31 2014 Nicolas Ades
 */
 
 #ifndef MAP_PARSER_H_
@@ -13,6 +13,10 @@
 
 # include <sys/types.h>
 # include <sys/stat.h>
+# include <stdio.h>
+# include <string.h>
+# include <unistd.h>
+# include <stdlib.h>
 # include <fcntl.h>
 # include "world.h"
 
