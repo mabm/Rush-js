@@ -5,15 +5,15 @@
 ** Login   <jobertomeu@epitech.net>
 ** 
 ** Started on  Sat May 10 15:21:44 2014 Joris Bertomeu
-** Last update Sat May 10 16:25:58 2014 Joris Bertomeu
+** Last update Sat May 10 16:30:19 2014 Joris Bertomeu
 */
 
 #include "libclient.h"
 
 void	print_error_lib(char *str)
 {
-  printf("Error : %s\n", str);
-  exit(-1);
+  fprintf(stderr, "Error : %s\n", str);
+  exit(EXIT_FAILURE);
 }
 
 void	check_hostaddr(t_libclient *slib, char *ip)
@@ -55,7 +55,7 @@ void	send_str(char *str, char *ip)
   init_lib(slib, ip);
   slib->flag = 1;
 
-  write(slib->to_server_socket, str, strlen(str) - 1);
+  write(slib->to_server_socket, str, strlen(str));
   read(slib->to_server_socket, slib->buffer, 4096);
   printf("Réponse : ");
   printf(slib->buffer);
