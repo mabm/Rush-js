@@ -5,7 +5,7 @@
 ## Login   <nicolas@epitech.net>
 ## 
 ## Started on  Sat May 10 13:21:17 2014 Nicolas Ades
-## Last update Sat May 10 20:12:29 2014 Nicolas Ades
+## Last update Sat May 10 20:34:14 2014 Laurent Fourrier
 ##
 
 SRC	=	src/main.c				\
@@ -31,22 +31,26 @@ RM	=	rm -f
 CFLAGS	+=	-W -Wall -Wextra -Werror -pedantic -ansi -iquoteinclude \
 		-Ilib/tlist/include
 
-LDFLAGS +=	-Llib/tlist
+LDFLAGS +=	-Llib/tlist/ -ltlist \
+		-Llib/tsys/ -ltsys
 
 all	:	libs $(NAME)
 
 libs	:
+		cd lib/tsys && make
 		cd lib/tlist && make
 
 $(NAME)	:	$(OBJ)
-		$(CC) -o $(NAME) $(OBJ)
+		$(CC) -o $(NAME) $(OBJ) $(LDFLAGS)
 
 clean	:
 		$(RM) $(OBJ)
+		cd lib/tsys && make clean
 		cd lib/tlist && make clean
 
 fclean	:	clean
 		$(RM) $(NAME)
+		cd lib/tsys && make fclean
 		cd lib/tlist && make fclean
 
 re	:	fclean all
