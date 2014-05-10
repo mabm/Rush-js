@@ -5,7 +5,7 @@
 ** Login   <mediav_j@epitech.net>
 ** 
 ** Started on  Sat May 10 19:06:33 2014 Jeremy Mediavilla
-** Last update Sat May 10 20:44:29 2014 Jeremy Mediavilla
+** Last update Sat May 10 20:52:16 2014 Jeremy Mediavilla
 */
 
 #include "world.h"
@@ -80,6 +80,18 @@ char		*get_monster_w_a(char *line, int *i)
   return (name);
 }
 
+void		aff_monsters(t_world *world)
+{
+  printf("\nINFO MONSTRE :\n");
+  printf("type : %s\n", world->monsters->type);
+  printf("hp : %i\n", world->monsters->hp);
+  printf("mana : %i\n", world->monsters->mana);
+  printf("speed : %i\n", world->monsters->speed);
+  printf("damage : %i\n", world->monsters->damage);
+  printf("armor : %s\n", world->monsters->armor);
+  printf("weapon : %s\n", world->monsters->weapon);
+}
+
 int		parse_map_monster(t_world *world, char *line)
 {
   int		i;
@@ -93,5 +105,6 @@ int		parse_map_monster(t_world *world, char *line)
   world->monsters->damage = get_monster_val(line, &i);
   world->monsters->weapon = get_monster_w_a(line, &i);
   world->monsters->armor =get_monster_w_a(line, &i);
+  aff_monsters(world);
   return (1);
 }
