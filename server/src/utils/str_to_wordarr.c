@@ -5,7 +5,7 @@
 ** Login   <fourri_l@epitech.net>
 ** 
 ** Started on  Sat May 10 16:58:49 2014 Laurent Fourrier
-** Last update Sat May 10 18:19:04 2014 Laurent Fourrier
+** Last update Sat May 10 20:30:06 2014 Laurent Fourrier
 */
 
 #include <stdlib.h>
@@ -30,7 +30,7 @@ static int	get_wordarr_len(char *str, char *seps)
   in_word = 0;
   while (*str)
     {
-      if (in_word ^ is_separator(*str, seps) == 0)
+      if ((in_word ^ is_separator(*str, seps)) == 0)
 	{
 	  in_word = !in_word;
 	  if (in_word)

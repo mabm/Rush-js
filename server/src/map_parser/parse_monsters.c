@@ -5,8 +5,12 @@
 ** Login   <mediav_j@epitech.net>
 ** 
 ** Started on  Sat May 10 19:06:33 2014 Jeremy Mediavilla
-** Last update Sat May 10 19:41:59 2014 Jeremy Mediavilla
+** Last update Sat May 10 20:52:16 2014 Jeremy Mediavilla
 */
+
+#include "world.h"
+#include "map_parser.h"
+#include "monster.h"
 
 int		get_monster_name(t_world *world, char *line)
 {
@@ -29,7 +33,7 @@ int		get_monster_name(t_world *world, char *line)
   return (len + 3);
 }
 
-int		get_monster_val(t_world *world, char *line, int *i)
+int		get_monster_val(char *line, int *i)
 {
   int		len;
   char		*nb;
@@ -37,13 +41,13 @@ int		get_monster_val(t_world *world, char *line, int *i)
 
   j = 0;
   (*i)++;
-  len = line[i];
+  len = line[*i];
   (*i)++;
   nb = malloc((len + 1) * sizeof(char));
   memset(nb, '\0', (len + 1));
   while (j <= (len - 1))
     {
-      nb[j] = len[*i];
+      nb[j] = line[*i];
       (*i)++;
       j++;
     }
@@ -51,7 +55,7 @@ int		get_monster_val(t_world *world, char *line, int *i)
   return (atoi(nb));
 }
 
-char		*get_monster_w_a(t_world *world, char *line, int *i)
+char		*get_monster_w_a(char *line, int *i)
 {
   int		len;
   char		*name;
@@ -62,18 +66,30 @@ char		*get_monster_w_a(t_world *world, char *line, int *i)
   /* la ligne d'en dessous peu faire de la merde */
 
   (*i)++;
-  len = line[i];
+  len = line[*i];
   (*i)++;
   name = malloc((len + 1) * sizeof(char));
   memset(name, '\0', (len + 1));
   while (j < (len - 1));
   {
-    name[j] = len[*i];
+    name[j] = line[*i];
     (*i)++;
     j++;
   }
   /* surement qu'il faut faire   (*i)++; ici*/
   return (name);
+}
+
+void		aff_monsters(t_world *world)
+{
+  printf("\nINFO MONSTRE :\n");
+  printf("type : %s\n", world->monsters->type);
+  printf("hp : %i\n", world->monsters->hp);
+  printf("mana : %i\n", world->monsters->mana);
+  printf("speed : %i\n", world->monsters->speed);
+  printf("damage : %i\n", world->monsters->damage);
+  printf("armor : %s\n", world->monsters->armor);
+  printf("weapon : %s\n", world->monsters->weapon);
 }
 
 int		parse_map_monster(t_world *world, char *line)
@@ -83,10 +99,12 @@ int		parse_map_monster(t_world *world, char *line)
   /* contacter mediav au moment des tests de cette fonction */
 
   i = get_monster_name(world, line);
-  world->monster->hp = get_monster_val(world, line, &i);
-  world->monster->mana = get_monster_val(world, line, &i);
-  world->monster->speed = get_monster_val(world, line, &i);
-  world->monster->damage = get_monster_val(world, line, &i);
-  world->monster->weapon = get_monster_w_a(world, line, &i);
-  world->monster->armor =get_monster_w_a(world, line, &i);
+  world->monsters->hp = get_monster_val(line, &i);
+  world->monsters->mana = get_monster_val(line, &i);
+  world->monsters->speed = get_monster_val(line, &i);
+  world->monsters->damage = get_monster_val(line, &i);
+  world->monsters->weapon = get_monster_w_a(line, &i);
+  world->monsters->armor =get_monster_w_a(line, &i);
+  aff_monsters(world);
+  return (1);
 }
