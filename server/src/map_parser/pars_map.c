@@ -5,7 +5,7 @@
 ** Login   <nicolas@epitech.net>
 ** 
 ** Started on  Sat May 10 15:58:21 2014 Nicolas Ades
-** Last update Sat May 10 20:45:26 2014 Jeremy Mediavilla
+** Last update Sat May 10 20:56:29 2014 Nicolas Ades
 */
 
 #include "world.h"
@@ -58,6 +58,7 @@ t_world		parse_map(char *file)
     }
   while ((info[i] = get_next_line(fd)) != NULL)
     i++;
+  info[100] = NULL;
   close(fd);
   pars_map_header(&world, info[0]);
   return (world);
