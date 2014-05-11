@@ -5,56 +5,47 @@
 ** Login   <nicolas@epitech.net>
 ** 
 ** Started on  Sat May 10 15:58:21 2014 Nicolas Ades
-** Last update Sun May 11 12:34:20 2014 Nicolas Ades
+** Last update Sun May 11 14:20:28 2014 Jeremy Mediavilla
 */
 
 #include "world.h"
 #include "gnl.h"
 #include "map_parser.h"
 
-char		*auto_copy(char *dest, char *src, int size)
+char		*parse_str_header(char *line, int *i)
 {
-  int		i;
   int		len;
+  char		*name;
+  int		j;
 
-  i = 0;
-  len = size;
-  while (i <= len)
-    {
-      dest[i] = src[size];
-      i++;
-      size++;
-    }
-  dest[i] = '\0';
-  return (dest);
-}
-
-char		*auto_complete(char *dest, char *line, int i)
-{
-  dest = malloc(line[i] + 2);
-  i += 1;
-  dest = auto_copy(dest, &line[i], line[i - 1]);
-  return (dest);
+  j = 0;
+  (*i)++;
+  len = line[*i];
+  (*i)++;
+  name = malloc((len + 1) * sizeof(char));
+  memset(name, '\0', (len + 1));
+  while (j < len)
+  {
+    name[j] = line[*i];
+    (*i)++;
+    j++;
+  }
+  return (name);
 }
 
 int		pars_map_header(t_world *world, char *line)
 {
   int		i;
 
-  i = 0;
-  if (line[i] != 123)
+  if (line[0] != 123)
     {
       printf("Error: Unrecognize file\n");
       exit(-1);
     }
-  i += 3;
-  world->game_name = auto_complete(world->game_name, line, i);
-  i += line[i];
-  i += 2;
-  world->end_room = auto_complete(world->end_room, line, i);
-  i += line[i];
-  i += 2;
-  world->start_room = auto_complete(world->start_room, line, i);
+  i = 2;
+  world->game_name = parse_str_header(line, &i);
+  world->end_room = parse_str_header(line, &i);
+  world->start_room = parse_str_header(line, &i);
   return (1);
 }
 
@@ -81,6 +72,7 @@ t_world		parse_map(char *file)
   i = 0;
   while (info[i])
     parse_map_elem(&world, info[i++]);
+  printf("\nMAP INFO\n");
   printf("name : %s\n", world.game_name);
   printf("start : %s\n", world.start_room);
   printf("end : %s\n", world.end_room);
