@@ -5,7 +5,7 @@
 ** Login   <valer@epitech.net>
 **
 ** Started on  Fri May  9 22:31:21 2014 Valerian Polizzi
-** Last update Sun May 11 18:59:53 2014 Nicolas Ades
+** Last update Sun May 11 19:43:53 2014 Nicolas Ades
 */
 
 #include <stdio.h>
@@ -41,31 +41,45 @@ int		check_cmd(char *cmd_tab, char *cmd)
   return (1);
 }
 
+char		*decoupage(char *cmd)
+{
+  char		**res;
+
+  res = my_strd_to_wordtab(cmd, " ");
+  return (res[1]);
+}
+
 int	       parse_cmd(char *cmd, int id, t_libserver *libserver, t_world *world)
 {
-  char		*tab[7];
-  t_fonc_tab	fonc_tab[6];
-  int		i;
-
-  i = 0;
-  libserver->fdtmp = id;
-  fonc_tab[0] = &is_next;
-  fonc_tab[1] = &is_list_team;
-  fonc_tab[2] = &is_attack;
-  fonc_tab[3] = &is_attack_spe;
-  fonc_tab[4] = &is_who;
-  fonc_tab[5] = &bye;
-  tab[0] = strdup("next");
-  tab[1] = strdup("list_team");
-  tab[2] = strdup("attack");
-  tab[3] = strdup("attack_spe");
-  tab[4] = strdup("who"); 
-  tab[5] = strdup("bye");
-  tab[6] = NULL;
-  while (i < 7)
+  
+  if (strncmp(cmd, "attack", 6) == 0)
     {
-      fonc_tab[i](get_opt(cmd, libserver), libserver);
-      i++;
+      is_attack(decoupage(cmd), libserver);
+    }
+  else if (strncmp(cmd, "next", 4) == 0)
+    {
+      is_next(decoupage(cmd), libserver);
+    }
+  else if (strncmp(cmd, "list_team", 9) == 0)
+    {
+      is_list_team(decoupage(cmd), libserver);
+    }
+  else if (strncmp(cmd, "attack_spe", 10) == 0)
+    {
+      is_attack_spe(decoupage(cmd), libserver);
+    }
+  else if (strncmp(cmd, "who", 3) == 0)
+    {
+      is_who(NULL, libserver);
+    }
+  else if (strncmp(cmd, "bye", 3) == 0)
+    {
+      bye(NULL, libserver);
+    }
+  else
+    {
+      printf("Unknown command : %s\n", cmd);
+      return (-1);
     }
   return (0);
 }

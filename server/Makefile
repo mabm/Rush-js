@@ -1,5 +1,6 @@
 SRC	=	src/main.c				\
 		src/cmd_parser/cmd_parsing.c		\
+		src/cmd_parser/my_strd_to_wordtab.c	\
 		src/cmd_parser/server.c			\
 		src/cmd_parser/commands.c		\
 		src/map_parser/parse_map_champ.c	\
