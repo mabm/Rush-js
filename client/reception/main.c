@@ -1,11 +1,11 @@
 /*
 ** main.c for EPIC_JS_FANTASY in /home/cruvei_t/RUSH_PGM/client/reception
-** 
-** Made by 
+**
+** Made by
 ** Login   <cruvei_t@epitech.net>
-** 
-** Started on  Sun May 11 15:18:12 2014 
-** Last update Sun May 11 17:19:56 2014 
+**
+** Started on  Sun May 11 15:18:12 2014
+** Last update Sun May 11 19:31:35 2014 Nicolas Charvoz
 */
 
 #include <pthread.h>
@@ -50,14 +50,14 @@ void	*exec_thread(void *data)
 	{
 	  verifneeded = 1;
 	  i = read(0, str, 4096);
-	  str[i - 1] = '\0'; 
+	  str[i - 1] = '\0';
 	  write(slib->to_server_socket, str, strlen(str));
 	}
       if (verifneeded == 1)
 	{
 	  verifneeded = 0;
 	  check_cmd_client(str, slib->buffer);
-	}    
+	}
     }
   return (NULL);
 }
@@ -67,7 +67,7 @@ int	main(int ac, char **av)
   pthread_t	thread;
   /* char		buffer[4096]; */
   /* int		i; */
-  
+
   slib = malloc(sizeof(*slib));
   init_lib(slib, "10.16.253.95", 33667);
   slib->flag = 1;
