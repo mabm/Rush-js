@@ -5,7 +5,7 @@
 ** Login   <merran_g@epitech.net>
 **
 ** Started on  Sat May 10 12:14:15 2014 Geoffrey Merran
-** Last update Sun May 11 18:58:32 2014 Jeremy Mediavilla
+** Last update Sun May 11 19:40:46 2014 Geoffrey Merran
 */
 
 #ifndef PARSER_
@@ -33,7 +33,7 @@ extern t_game	*game;
 typedef struct	s_winMap
 {
   GtkWidget	*mainWindow;
-  GtkWidget	*labelWin[2];
+  GtkWidget	*labelWin[3];
   GtkWidget	*tableWin;
   GtkWidget	*winButton[4];
   GtkWidget	*mapEntry;
@@ -42,7 +42,7 @@ typedef struct	s_winMap
 typedef struct	s_winMonster
 {
   GtkWidget	*mainWindow;
-  GtkWidget	*labelWin[8];
+  GtkWidget	*labelWin[9];
   GtkWidget	*tableWin;
   GtkWidget	*winButton[2];
   GtkWidget	*attEntry[7];
@@ -52,7 +52,7 @@ typedef struct	s_winChampion
 {
   GtkWidget	*combo_box;
   GtkWidget	*mainWindow;
-  GtkWidget	*labelWin[9];
+  GtkWidget	*labelWin[10];
   GtkWidget	*tableWin;
   GtkWidget	*winButton[2];
   GtkWidget	*attEntry[8];
@@ -81,7 +81,6 @@ void   	init_button_winmap(t_winMap *winmap);
 void   	on_clicked_createbutton(GtkWidget *button, t_winMap *data);
 void   	on_clicked_nextbutton(GtkWidget *button, t_winMap *data);
 
-
 /*
 ** WinMonster
 */
@@ -92,7 +91,6 @@ void   	create_att_monster(t_winMonster *winmonster);
 void   	pos_att_monster(t_winMonster *winmonster);
 void   	on_clicked_add_monster(GtkWidget *addButton, t_winMonster *data);
 void   	on_clicked_next_monster(GtkWidget *prevButton, t_winMonster *data);
-
 
 /*
 ** WinRoom

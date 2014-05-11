@@ -5,7 +5,7 @@
 ** Login   <merran_g@epitech.net>
 **
 ** Started on  Sat May 10 22:14:18 2014 Geoffrey Merran
-** Last update Sun May 11 15:33:51 2014 Geoffrey Merran
+** Last update Sun May 11 19:15:01 2014 Geoffrey Merran
 */
 
 #include "parser.h"
@@ -21,8 +21,6 @@ void		create_att_room(t_winRoom *winroom)
   winroom->labelWin[4] = gtk_label_new("Mobs");
   winroom->attEntry[3] = gtk_entry_new_with_max_length(20);
 }
-
-
 
 void		pos_att_room(t_winRoom *winroom)
 {

@@ -5,7 +5,7 @@
 ** Login   <merran_g@epitech.net>
 ** 
 ** Started on  Sun May 11 15:37:19 2014 Geoffrey Merran
-** Last update Sun May 11 17:45:56 2014 Geoffrey Merran
+** Last update Sun May 11 19:19:33 2014 Geoffrey Merran
 */
 
 #define _BSD_SOURCE
@@ -37,8 +37,7 @@ void		add_champion(t_winChampion *data, t_champ **champs)
 	 new->name, new->type);
   printf("Stats - Hp: %s, Spe: %s, Speed: %s\n",
 	 new->hp, new->spe, new->speed);
-  printf("Weapon : [%s] - Armor : [%s]\n", new->weapon, new->armor);
-  printf("===============\n");
+  printf("Weapon : [%s] - Armor : [%s]\n=========\n", new->weapon, new->armor);
 }
 
 void		add_monster(t_winMonster *data, t_monster **monsters)
