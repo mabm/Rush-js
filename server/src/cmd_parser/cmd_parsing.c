@@ -6,7 +6,7 @@
 **
 ** Started on  Fri May  9 22:31:21 2014 Valerian Polizzi
 <<<<<<< HEAD
-** Last update Sun May 11 19:43:53 2014 Nicolas Ades
+** Last update Sun May 11 19:59:01 2014 Nicolas Ades
 =======
 ** Last update Sun May 11 19:24:46 2014 Laurent Fourrier
 >>>>>>> 0bd0cc6547124eed8d200c6735ea23c2b81364d2
@@ -53,7 +53,6 @@ char		*decoupage(char *cmd)
   return (res[1]);
 }
 
-<<<<<<< HEAD
 int	       parse_cmd(char *cmd, int id, t_libserver *libserver, t_world *world)
 {
   
@@ -82,31 +81,11 @@ int	       parse_cmd(char *cmd, int id, t_libserver *libserver, t_world *world)
       bye(NULL, libserver);
     }
   else
-=======
-  i = 0;
-  libserver->fdtmp = id;
-<<<<<<< HEAD
-  printf("Commande : %s\n", cmd);
-=======
->>>>>>> ab803a6b5b75b95785a8fa2d1dbb5813f945cc20
-  fonc_tab[0] = &is_next;
-  fonc_tab[1] = &is_list_team;
-  fonc_tab[2] = &is_attack;
-  fonc_tab[3] = &is_attack_spe;
-  fonc_tab[4] = &is_who;
-  fonc_tab[5] = &bye;
-  tab[0] = strdup("next");
-  tab[1] = strdup("list_team");
-  tab[2] = strdup("attack");
-  tab[3] = strdup("attack_spe");
-  tab[4] = strdup("who"); 
-  tab[5] = strdup("bye");
-  tab[6] = NULL;
-  while (i < 7)
->>>>>>> 0bd0cc6547124eed8d200c6735ea23c2b81364d2
     {
       printf("Unknown command : %s\n", cmd);
       return (-1);
     }
+  libserver->fdtmp = id;
+  printf("Commande : %s\n", cmd);
   return (0);
 }
