@@ -5,7 +5,7 @@
 ** Login   <jobertomeu@epitech.net>
 ** 
 ** Started on  Sat May 10 17:04:26 2014 Joris Bertomeu
-** Last update Sun May 11 18:16:54 2014 Joris Bertomeu
+** Last update Sun May 11 19:24:11 2014 Laurent Fourrier
 */
 
 #ifndef LIBSERVER_H_
@@ -21,7 +21,7 @@
 # include <sys/time.h>
 # include <sys/types.h>
 # include <unistd.h>
-#include "../../include/world.h"
+# include "world.h"
 
 typedef struct s_clients t_clients;
 struct s_clients
