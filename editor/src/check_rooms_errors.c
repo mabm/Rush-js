@@ -5,7 +5,7 @@
 ** Login   <mediav_j@epitech.net>
 ** 
 ** Started on  Sun May 11 19:33:43 2014 Jeremy Mediavilla
-** Last update Sun May 11 20:16:51 2014 Jeremy Mediavilla
+** Last update Sun May 11 20:24:25 2014 Jeremy Mediavilla
 */
 
 #define _BSD_SOURCE
@@ -13,26 +13,16 @@
 
 char		*check_error_button1()
 {
-  char		*err_msg;
-
   if (game->header->start_room == NULL)
     return (NULL);
-  err_msg = strdup("Room : ");
-  err_msg = strcat(err_msg, strdup(game->header->start_room->name));
-  err_msg = strcat(err_msg, strdup(" is already the starting room"));
-  return (err_msg);
+  return ("There is already a starting room");
 }
 
 char		*check_error_button2()
 {
-  char		*err_msg;
-
   if (game->header->end_room == NULL)
     return (NULL);
-  err_msg = strdup("Room : ");
-  err_msg = strcat(err_msg, strdup(game->header->end_room->name));
-  err_msg = strcat(err_msg, strdup(" is already the ending room"));
-  return (err_msg);
+  return ("There is already a ending room");
 }
 
 int		is_already_this_room(char *name)
