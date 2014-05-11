@@ -109,7 +109,6 @@ void	fade_out(t_main*, t_choice*);
 void	fade_in(t_main*, t_choice*);
 /* init_champions.c */
 void	init_perso(t_list_champ**, t_champ*, int, t_main*, t_choice*);
-void	init_test(t_test*);
 void	init_champions(t_main*, t_champ*, t_choice*);
 /* quit_game.c */
 void	quit_game(t_main*);

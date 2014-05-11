@@ -5,7 +5,7 @@
 ** Login   <charvo_a@epitech.net>
 **
 ** Started on  Sun May 11 16:09:06 2014 Nicolas Charvoz
-** Last update Sun May 11 17:49:51 2014 Nicolas Charvoz
+** Last update Sun May 11 18:26:07 2014 Nicolas Charvoz
 */
 
 #include "../hdr/sdl.h"
@@ -78,7 +78,7 @@ void	mouse_button_up(t_main *m, t_champ *champ, t_choice *c)
 
   if (m->i == 0)
     case_of_first(m, x, y, champ, c);
-  else if (m->i == 5) /*NBR DE PERSONNAGE POSSIBLE*/
+  else if (m->i >= 5) /*NBR DE PERSONNAGE POSSIBLE*/
     case_of_last(m, x, y, champ, c);
   else
     case_of_middle(m, x, y, champ, c);
