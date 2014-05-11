@@ -5,7 +5,7 @@
 ** Login   <charvo_a@epitech.net>
 **
 ** Started on  Sun May 11 16:09:06 2014 Nicolas Charvoz
-** Last update Sun May 11 18:47:20 2014 Nicolas Charvoz
+** Last update Sun May 11 18:55:33 2014 Nicolas Charvoz
 */
 
 #include "../hdr/sdl.h"
@@ -25,6 +25,10 @@ void	case_of_first(t_main *m, int x, int y, t_champ *champ, t_choice *c)
   if ((x >= 690 && x <= 800) && (y >= 545 && y <= 595))
     {
       m->i++;
+    }
+  else if ((x >= 345 && x <= 455) && (y >= 450 && u <= 590))
+    {
+      game(&champ[m->i]);
     }
  }
 
@@ -50,6 +54,10 @@ void	case_of_middle(t_main *m, int x, int y, t_champ *champ, t_choice *c)
    {
      m->i++;
    }
+ else if ((x >= 345 && x <= 455) && (y >= 450 && u <= 590))
+    {
+      game(&champ[m->i]);
+    }
 }
 
 void	case_of_last(t_main *m, int x, int y, t_champ *champ, t_choice *c)
@@ -68,6 +76,10 @@ void	case_of_last(t_main *m, int x, int y, t_champ *champ, t_choice *c)
      {
        m->i--;
      }
+  else if ((x >= 345 && x <= 455) && (y >= 450 && u <= 590))
+    {
+      game(&champ[m->i]);
+    }
 }
 
 void	mouse_button_up(t_main *m, t_champ *champ, t_choice *c)
