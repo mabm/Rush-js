@@ -1,0 +1,33 @@
+/* #include "../hdr/sdl.h" */
+
+/* void	fade_out(t_main *m, t_choice *c) */
+/* { */
+/*   int		a; */
+
+/*   a = 0; */
+/*   while (a < 255) */
+/*     { */
+/*       usleep(1000); */
+/*       SDL_SetAlpha(c->background, SDL_SRCALPHA, a); */
+/*       SDL_Flip(m->ecran); */
+/*       a += 1; */
+/*     } */
+/* } */
+
+/* void	fade_in(t_main *m, t_choice *c) */
+/* { */
+/*   int	a; */
+/*   Uint32	black; */
+
+/*   black = SDL_MapRGB(m->ecran->format, 0, 0, 0); */
+
+/*   a = 255; */
+/*   SDL_FillRect(c->background, NULL, black); */
+/*   while (a > 0) */
+/*     { */
+/*       usleep(1000); */
+/*       SDL_SetAlpha(c->background, SDL_SRCALPHA, a); */
+/*       SDL_Flip(m->ecran); */
+/*       a -= 1; */
+/*     } */
+/* } */
