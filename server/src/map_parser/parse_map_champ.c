@@ -5,7 +5,7 @@
 ** Login   <fourri_l@epitech.net>
 ** 
 ** Started on  Sat May 10 19:16:01 2014 Laurent Fourrier
-** Last update Sat May 10 21:37:46 2014 Laurent Fourrier
+** Last update Sun May 11 17:10:05 2014 Joris Bertomeu
 */
 
 #include <stdlib.h>
@@ -52,7 +52,7 @@ int		parse_map_champ(t_world *world, char *line)
   rtn = malloc(sizeof(t_champion));
   if (!rtn)
     exit(0);
-  it = 2;
+  it = 1;
   rtn->name = read_string(line + it);
   it += line[it] + 2;
   rtn->class = get_class(line + it);

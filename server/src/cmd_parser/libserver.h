@@ -5,7 +5,7 @@
 ** Login   <jobertomeu@epitech.net>
 ** 
 ** Started on  Sat May 10 17:04:26 2014 Joris Bertomeu
-** Last update Sun May 11 15:04:48 2014 Joris Bertomeu
+** Last update Sun May 11 18:16:54 2014 Joris Bertomeu
 */
 
 #ifndef LIBSERVER_H_
@@ -21,6 +21,7 @@
 # include <sys/time.h>
 # include <sys/types.h>
 # include <unistd.h>
+#include "../../include/world.h"
 
 typedef struct s_clients t_clients;
 struct s_clients
@@ -40,9 +41,11 @@ struct s_libserver
   char			buffer[4096];
   struct sockaddr_in	serv_addr;
   struct sockaddr_in	cli_addr[6];
+  t_world		*world;
   int			id_client;
   t_clients		clients[6];
   int			fds[6];
+  int			fdtmp;
 };
 
 #endif /* LIBSERVER_H_ */
