@@ -5,7 +5,7 @@
 ** Login   <merran_g@epitech.net>
 **
 ** Started on  Fri Oct  4 09:11:03 2013 Geoffrey Merran
-** Last update Sun May 11 01:40:54 2014 Geoffrey Merran
+** Last update Sun May 11 16:40:33 2014 Geoffrey Merran
 */
 
 #include "parser.h"
@@ -30,6 +30,8 @@ void		launch_editor()
   init_window(&mainWindow);
   game = my_xmalloc(sizeof(*game));
   game->header = my_xmalloc(sizeof(*game->header));
+  game->header->start_room = NULL;
+  game->header->end_room = NULL;
   game->champs = NULL;
   game->monsters = NULL;
   game->rooms = NULL;

@@ -5,7 +5,7 @@
 ** Login   <merran_g@epitech.net>
 **
 ** Started on  Sat May 10 12:14:15 2014 Geoffrey Merran
-** Last update Sun May 11 01:34:10 2014 Geoffrey Merran
+** Last update Sun May 11 16:49:45 2014 Geoffrey Merran
 */
 
 #ifndef PARSER_
@@ -25,7 +25,7 @@
 # include "my.h"
 
 /*
-** Editor
+** Graphic Editor & Windows
 */
 
 extern t_game	*game;
@@ -50,6 +50,7 @@ typedef struct	s_winMonster
 
 typedef struct	s_winChampion
 {
+  GtkWidget	*combo_box;
   GtkWidget	*mainWindow;
   GtkWidget	*labelWin[9];
   GtkWidget	*tableWin;
@@ -60,6 +61,7 @@ typedef struct	s_winChampion
 typedef struct	s_winRoom
 {
   GtkWidget	*mainWindow;
+  GtkWidget	*checkButton[2];
   GtkWidget	*labelWin[5];
   GtkWidget	*tableWin;
   GtkWidget	*winButton[2];
@@ -67,17 +69,68 @@ typedef struct	s_winRoom
 }		t_winRoom;
 
 void	launch_editor();
-void	create_window(GtkWidget *mainWindow);
-void	create_winmonster(GtkWidget *mainWindow);
-void   	create_winroom(GtkWidget *mainWindow);
-void	create_winchampion(GtkWidget *mainWindow);
 void   	init_window(GtkWidget **mainWindow);
+
+/*
+** WinMenu
+*/
+
+void	create_window(GtkWidget *mainWindow);
+void   	init_winmap(t_winMap *winmap);
+void   	init_button_winmap(t_winMap *winmap);
+void   	on_clicked_createbutton(GtkWidget *button, t_winMap *data);
+void   	on_clicked_nextbutton(GtkWidget *button, t_winMap *data);
+
+
+/*
+** WinMonster
+*/
+
+void	create_winmonster(GtkWidget *mainWindow);
+void   	init_winmonster(t_winMonster *winmonster);
+void   	create_att_monster(t_winMonster *winmonster);
+void   	pos_att_monster(t_winMonster *winmonster);
+void   	on_clicked_add_monster(GtkWidget *addButton, t_winMonster *data);
+void   	on_clicked_next_monster(GtkWidget *prevButton, t_winMonster *data);
+
+
+/*
+** WinRoom
+*/
+
+void   	create_winroom(GtkWidget *mainWindow);
+void 	init_winroom(t_winRoom *winroom);
+void   	create_att_room(t_winRoom *winroom);
+void   	pos_att_room(t_winRoom *winroom);
+void   	on_clicked_add_room(GtkWidget *addButton, t_winRoom *data);
+void   	on_clicked_previous_room(GtkWidget *prevButton, t_winRoom *data);
+
+/*
+** WinChampion
+*/
+
+void	create_winchampion(GtkWidget *mainWindow);
+void   	init_winchampion(t_winChampion *winchampion);
+void   	create_att_champion(t_winChampion *winchampion);
+void   	pos_att_champion(t_winChampion *winchampion);
+void   	on_clicked_add_champ(GtkWidget *addButton, t_winChampion *data);
+void   	on_clicked_next_champ(GtkWidget *prevButton, t_winChampion *data);
+
+/*
+** Add To lists
+*/
+
+void   	add_champion(t_winChampion *data, t_champ **champs);
+void   	add_monster(t_winMonster *data, t_monster **monsters);
+void   	add_room(t_winRoom *data, t_room **rooms);
 
 /*
 ** Write in file
 */
 
+void   	create_map();
 int	create_file(char *name);
+void   	put_champs(int fd);
 void	write_header(int fd, t_header *header);
 void	write_champ(int fd, t_champ *champ);
 void	write_string(int fd, char *str);

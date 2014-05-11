@@ -5,7 +5,7 @@
 ** Login   <merran_g@epitech.net>
 ** 
 ** Started on  Sat May 10 13:58:16 2014 Geoffrey Merran
-** Last update Sat May 10 20:10:24 2014 Geoffrey Merran
+** Last update Sun May 11 16:15:32 2014 Geoffrey Merran
 */
 
 #include "parser.h"
@@ -51,7 +51,10 @@ void	write_attribut(int fd, char att)
 
 void	write_header(int fd, t_header *header)
 {
-  write(fd, MAGIC_NUMBER, strlen(MAGIC_NUMBER));
+  char	magic;
+
+  magic = MAGIC_NUMBER;
+  write(fd, &magic, 1);
   write_attribut(fd, HEADER);
   write_attribut(fd, NAME);
   write_string(fd, header->name);

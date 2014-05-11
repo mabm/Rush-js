@@ -5,12 +5,12 @@
 ** Login   <merran_g@epitech.net>
 ** 
 ** Started on  Sat May 10 11:22:41 2014 Geoffrey Merran
-** Last update Sat May 10 20:13:51 2014 Geoffrey Merran
+** Last update Sun May 11 16:15:54 2014 Geoffrey Merran
 */
 
 #ifndef EDITOR_
 # define EDITOR_
-# define MAGIC_NUMBER "123"
+# define MAGIC_NUMBER 123
 
 /*
 ** Instructions defines

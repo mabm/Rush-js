@@ -5,9 +5,10 @@
 ** Login   <merran_g@epitech.net>
 **
 ** Started on  Sat May 10 16:30:59 2014 Geoffrey Merran
-** Last update Sun May 11 01:55:42 2014 Geoffrey Merran
+** Last update Sun May 11 17:08:03 2014 Geoffrey Merran
 */
 
+#define _BSD_SOURCE
 #include "parser.h"
 
 void		init_button_winmap(t_winMap *winmap)
@@ -59,8 +60,12 @@ void		on_clicked_createbutton(GtkWidget *button, t_winMap *data)
   text = gtk_entry_get_text(GTK_ENTRY(data->mapEntry));
   if (text != NULL && text[0] != '\0')
     {
-      game->header->name = (char *) text;
+      game->header->name = strdup((char *) text);
       printf("MapName changed to [%s]\n", text);
+      /* Si start room, end room, 1 champ, 1 monstre */
+      gtk_widget_destroy(data->mainWindow);
+      gtk_main_quit();
+      create_map();
     }
 }
 

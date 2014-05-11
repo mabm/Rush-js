@@ -5,7 +5,7 @@
 ** Login   <merran_g@epitech.net>
 **
 ** Started on  Sat May 10 22:14:18 2014 Geoffrey Merran
-** Last update Sun May 11 01:19:44 2014 Geoffrey Merran
+** Last update Sun May 11 03:07:51 2014 Geoffrey Merran
 */
 
 #include "parser.h"
@@ -14,7 +14,7 @@ void		create_att_monster(t_winMonster *winmonster)
 {
   winmonster->labelWin[1] = gtk_label_new("Type");
   winmonster->attEntry[0] = gtk_entry_new_with_max_length(20);
-  winmonster->labelWin[2] = gtk_label_new("Heath point");
+  winmonster->labelWin[2] = gtk_label_new("Health points");
   winmonster->attEntry[1] = gtk_entry_new_with_max_length(20);
   winmonster->labelWin[3] = gtk_label_new("Special");
   winmonster->attEntry[2] = gtk_entry_new_with_max_length(20);
@@ -66,27 +66,6 @@ void		init_winmonster(t_winMonster *winmonster)
 		   2, 3, 8, 9,
 		   GTK_EXPAND | GTK_FILL, GTK_EXPAND,
 		   0, 0);
-}
-
-void		on_clicked_add_monster(GtkWidget *addButton, t_winMonster *data)
-{
-  const gchar  	*text;
-
-  (void) addButton;
-  text = gtk_entry_get_text(GTK_ENTRY(data->attEntry[0]));
-  printf("%s\n", text);
-  text = gtk_entry_get_text(GTK_ENTRY(data->attEntry[1]));
-  printf("%s\n", text);
-  text = gtk_entry_get_text(GTK_ENTRY(data->attEntry[2]));
-  printf("%s\n", text);
-  text = gtk_entry_get_text(GTK_ENTRY(data->attEntry[3]));
-  printf("%s\n", text);
-  text = gtk_entry_get_text(GTK_ENTRY(data->attEntry[4]));
-  printf("%s\n", text);
-  text = gtk_entry_get_text(GTK_ENTRY(data->attEntry[5]));
-  printf("%s\n", text);
-  text = gtk_entry_get_text(GTK_ENTRY(data->attEntry[6]));
-  printf("%s\n", text);
 }
 
 void		on_clicked_next_monster(GtkWidget *prevButton, t_winMonster *data)

@@ -5,7 +5,7 @@
 ** Login   <merran_g@epitech.net>
 **
 ** Started on  Sat May 10 22:14:18 2014 Geoffrey Merran
-** Last update Sun May 11 01:24:21 2014 Geoffrey Merran
+** Last update Sun May 11 15:33:51 2014 Geoffrey Merran
 */
 
 #include "parser.h"
@@ -39,6 +39,12 @@ void		pos_att_room(t_winRoom *winroom)
 				2, 3, i + 1, i + 2);
       i++;
     }
+  gtk_table_attach_defaults(GTK_TABLE(winroom->tableWin),
+  			    winroom->checkButton[0],
+  			    1, 2, i + 1, i + 2);
+  gtk_table_attach_defaults(GTK_TABLE(winroom->tableWin),
+  			    winroom->checkButton[1],
+  			    2, 3, i + 1, i + 2);
 }
 
 void		init_winroom(t_winRoom *winroom)
@@ -46,20 +52,22 @@ void		init_winroom(t_winRoom *winroom)
   winroom->labelWin[0] = gtk_label_new("Room Editor");
   winroom->winButton[0] = gtk_button_new_with_label("Add");
   winroom->winButton[1] = gtk_button_new_with_label("Previous");
-  winroom->tableWin = gtk_table_new(7, 4, TRUE);
+  winroom->checkButton[0] = gtk_check_button_new_with_label("Start Room");
+  winroom->checkButton[1] = gtk_check_button_new_with_label("End Room");
+  winroom->tableWin = gtk_table_new(8, 4, TRUE);
   gtk_container_add(GTK_CONTAINER(winroom->mainWindow),
 		    GTK_WIDGET(winroom->tableWin));
   create_att_room(winroom);
   pos_att_room(winroom);
   gtk_table_attach_defaults(GTK_TABLE(winroom->tableWin),
-				winroom->labelWin[0],
-				1, 3, 0, 1);
+  				winroom->labelWin[0],
+  				1, 3, 0, 1);
   gtk_table_attach(GTK_TABLE(winroom->tableWin), winroom->winButton[0],
-		   1, 2, 5, 6,
+		   1, 2, 6, 7,
 		   GTK_EXPAND | GTK_FILL, GTK_EXPAND,
 		   0, 0);
   gtk_table_attach(GTK_TABLE(winroom->tableWin), winroom->winButton[1],
-		   2, 3, 5, 6,
+		   2, 3, 6, 7,
 		   GTK_EXPAND | GTK_FILL, GTK_EXPAND,
 		   0, 0);
 }
@@ -83,6 +91,8 @@ void		create_winroom(GtkWidget *mainWindow)
   winroom = my_xmalloc(sizeof(*winroom));
   winroom->mainWindow = mainWindow;
   init_winroom(winroom);
+  g_signal_connect(G_OBJECT(winroom->winButton[0]), "clicked",
+		   G_CALLBACK(on_clicked_add_room), winroom);
   g_signal_connect(G_OBJECT(winroom->winButton[1]), "clicked",
 		   G_CALLBACK(on_clicked_previous_room), winroom);
   gtk_widget_show_all(winroom->mainWindow);

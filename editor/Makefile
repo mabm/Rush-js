@@ -5,7 +5,7 @@
 ## Login   <merran_g@epitech.net>
 ## 
 ## Started on  Mon Oct 21 13:28:05 2013 Geoffrey Merran
-## Last update Sun May 11 00:17:17 2014 samuel de-weerdt
+## Last update Sun May 11 17:03:53 2014 Geoffrey Merran
 ##
 
 RM	= rm -f
@@ -21,13 +21,16 @@ OBJ	= $(SRC:.c=.o)
 
 LIB	= libmy/
 
-SRC	= src/main.c \
-	src/create_file.c \
-	src/write_file.c \
-	src/interface.c \
-	src/interface2.c \
-	src/interface3.c \
-	src/interface4.c \
+SRC	= src/main.c			\
+	src/create_file.c		\
+	src/write_file.c		\
+	src/write_file2.c		\
+	src/interface.c			\
+	src/interface_monster.c		\
+	src/interface_champion.c	\
+	src/interface_room.c		\
+	src/interface_add.c		\
+	src/addlist.c			\
 	src/xfunction.c
 
 all:		libs $(NAME)
