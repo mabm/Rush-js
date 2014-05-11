@@ -5,7 +5,7 @@
 ** Login   <valer@epitech.net>
 **
 ** Started on  Fri May  9 22:31:21 2014 Valerian Polizzi
-** Last update Sun May 11 17:07:28 2014 Joris Bertomeu
+** Last update Sun May 11 17:31:48 2014 Joris Bertomeu
 */
 
 #include <stdio.h>
@@ -41,23 +41,26 @@ int		check_cmd(char *cmd_tab, char *cmd)
 
 int	       parse_cmd(char *cmd, int id, t_libserver *libserver, t_world *world)
 {
-  char		*tab[6];
-  t_fonc_tab	fonc_tab[5];
+  char		*tab[7];
+  t_fonc_tab	fonc_tab[6];
   int		i;
 
   i = 0;
+  printf("Commande : %s\n", cmd);
   fonc_tab[0] = &is_next;
   fonc_tab[1] = &is_list_team;
   fonc_tab[2] = &is_attack;
   fonc_tab[3] = &is_attack_spe;
   fonc_tab[4] = &is_who;
+  fonc_tab[5] = &bye;
   tab[0] = "next";
   tab[1] = "list_team";
   tab[2] = "attack";
   tab[3] = "attack_spe";
   tab[4] = "who";
-  tab[5] = NULL;
+  tab[5] = "bye";
+  tab[6] = NULL;
   while (check_cmd(tab[++i], cmd) != 0);
-  fonc_tab[i](get_opt(cmd));
+  fonc_tab[i](get_opt(cmd), libserver);
   return (0);
 }
