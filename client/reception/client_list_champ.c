@@ -5,7 +5,7 @@
 ** Login   <fouhet_k@epitech.net>
 ** 
 ** Started on  Sat May 10 14:34:16 2014 Kevin Fouhety
-** Last update Sat May 10 19:56:19 2014 Kevin Fouhety
+** Last update Sun May 11 10:53:31 2014 
 */
 
 #include "client_champ.h"
@@ -34,6 +34,8 @@ void		add_new_champ_to_list(char *stats, t_list_champ **list_champ)
   elem->dmg = atoi(tmp);
   free(tmp);
   elem->next = *list_champ;
+  if (elem->next != NULL)
+    elem->next->previous = elem;
   *list_champ = elem;
 }
 

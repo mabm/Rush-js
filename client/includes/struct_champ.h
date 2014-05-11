@@ -5,7 +5,7 @@
 ** Login   <fouhet_k@epitech.net>
 ** 
 ** Started on  Sat May 10 11:43:57 2014 Kevin Fouhety
-** Last update Sat May 10 14:09:44 2014 Kevin Fouhety
+** Last update Sun May 11 10:52:43 2014 
 */
 
 #ifndef STRUCT_CLIENT_H_
@@ -34,6 +34,7 @@ typedef struct s_list_champ
   char			*weapon;
   char			*armor;
   struct s_list_champ	*next;
+  struct s_list_champ	*previous;
 }t_list_champ;
 
 
