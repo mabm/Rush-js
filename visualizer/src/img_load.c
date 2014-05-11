@@ -5,7 +5,7 @@
 ** Login   <charvo_a@epitech.net>
 **
 ** Started on  Sat May 10 15:15:38 2014 Nicolas Charvoz
-** Last update Sun May 11 18:36:10 2014 Nicolas Charvoz
+** Last update Sun May 11 19:04:57 2014 Nicolas Charvoz
 */
 
 #include "../hdr/sdl.h"
@@ -67,7 +67,7 @@ void	img_load_menu(t_main *m, t_choice *c)
   c->pos_bio.x = 580;
   c->pos_bio.y = 260;
   c->pos_attack.x = 640;
-  c->pos_attack.y = 465;
-  c->pos_defense.x = 725;
+  c->pos_attack.y = 430;
+  c->pos_defense.x = 640;
   c->pos_defense.y = 465;
 }
