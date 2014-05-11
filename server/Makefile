@@ -1,5 +1,15 @@
+##
+## Makefile for  in /home/nicolas/Workspace/rush/rush_promo_js/server
+## 
+## Made by Nicolas Ades
+## Login   <nicolas@epitech.net>
+## 
+## Started on  Sat May 10 13:21:17 2014 Nicolas Ades
+## Last update Sun May 11 19:21:25 2014 Laurent Fourrier
+##
 SRC	=	src/main.c				\
 		src/cmd_parser/cmd_parsing.c		\
+		src/cmd_parser/my_strd_to_wordtab.c	\
 		src/cmd_parser/server.c			\
 		src/cmd_parser/commands.c		\
 		src/map_parser/parse_map_champ.c	\
@@ -10,6 +20,7 @@ SRC	=	src/main.c				\
 		src/map_parser/parse_monsters.c		\
 		src/utils/read_string.c			\
 		src/utils/str_to_wordarr.c		\
+		src/utils/tl_get_elem.c			\
 		src/world/init_world.c
 
 
