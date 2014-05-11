@@ -5,7 +5,7 @@
 ** Login   <mediav_j@epitech.net>
 ** 
 ** Started on  Sun May 11 19:33:43 2014 Jeremy Mediavilla
-** Last update Sun May 11 21:17:11 2014 Jeremy Mediavilla
+** Last update Sun May 11 21:21:26 2014 Jeremy Mediavilla
 */
 
 #define _BSD_SOURCE
@@ -49,7 +49,7 @@ char		*check_room_error(t_winRoom *data)
     return ("Missing room name");
   else if (is_already_this_room((char *) text) == 1)
     return ("This room already exist");
-  text = gtk_entry_get_text(GTK_ENTRY(data->attEntry[1]));
+  text = gtk_combo_box_get_active_text(GTK_COMBO_BOX(data->combo_box));
   if (text == NULL)
     gtk_entry_set_text(GTK_ENTRY(data->attEntry[1]), "NONE");
   text = gtk_entry_get_text(GTK_ENTRY(data->attEntry[2]));
