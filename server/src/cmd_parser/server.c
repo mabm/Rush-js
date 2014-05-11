@@ -5,7 +5,7 @@
 ** Login   <jobertomeu@epitech.net>
 ** 
 ** Started on  Sat May 10 14:45:14 2014 Joris Bertomeu
-** Last update Sun May 11 17:25:00 2014 Joris Bertomeu
+** Last update Sun May 11 17:49:18 2014 Joris Bertomeu
 */
 
 #include "libserver.h"
@@ -102,6 +102,7 @@ int	server(t_world *world)
 
   libserver = malloc(sizeof(*libserver));
   init_lib(libserver, 33667);
+  libserver->world = world;
   listen(libserver->sockfd, 5);
   printf("Waiting connection on port %d ...\n", libserver->portno);
   while (1)
