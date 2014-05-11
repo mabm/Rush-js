@@ -5,7 +5,7 @@
 ** Login   <deffon_k@epitech.net>
 **
 ** Started on  Sat May 10 23:21:34 2014 deffontaine kevin
-** Last update Sun May 11 15:27:21 2014 Geoffrey Merran
+** Last update Sun May 11 20:04:22 2014 Geoffrey Merran
 */
 
 #include "parser.h"
@@ -65,9 +65,10 @@ void		pos_att_champion(t_winChampion *winchampion)
 void		init_winchampion(t_winChampion *winchampion)
 {
   winchampion->labelWin[0] = gtk_label_new("Champion Editor");
+  winchampion->labelWin[9] = gtk_label_new("");
   winchampion->winButton[0] = gtk_button_new_with_label("Add");
   winchampion->winButton[1] = gtk_button_new_with_label("Previous");
-  winchampion->tableWin = gtk_table_new(11, 4, TRUE);
+  winchampion->tableWin = gtk_table_new(12, 4, TRUE);
   gtk_container_add(GTK_CONTAINER(winchampion->mainWindow),
 		    GTK_WIDGET(winchampion->tableWin));
   create_att_champion(winchampion);
@@ -83,6 +84,9 @@ void		init_winchampion(t_winChampion *winchampion)
 		   2, 3, 9, 10,
 		   GTK_EXPAND | GTK_FILL, GTK_EXPAND,
 		   0, 0);
+  gtk_table_attach_defaults(GTK_TABLE(winchampion->tableWin),
+			    winchampion->labelWin[9],
+			    0, 4, 10, 11);
 }
 
 void		on_clicked_next_champ(GtkWidget *prevButton, t_winChampion *data)

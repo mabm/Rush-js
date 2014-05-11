@@ -5,7 +5,7 @@
 ** Login   <merran_g@epitech.net>
 ** 
 ** Started on  Sun May 11 03:01:32 2014 Geoffrey Merran
-** Last update Sun May 11 20:09:55 2014 Jeremy Mediavilla
+** Last update Sun May 11 20:19:03 2014 Jeremy Mediavilla
 */
 
 #include "parser.h"
@@ -17,9 +17,12 @@ void		on_clicked_add_champ(GtkWidget *addButton, t_winChampion *data)
   (void) addButton;
   error = check_champ_errors(data);
   if (error == NULL)
-    add_champion(data, &game->champs);
+    {
+      add_champion(data, &game->champs);
+      gtk_label_set_text(GTK_LABEL(data->labelWin[9]), "");
+    }
   else
-    printf("%s\n", error);
+    gtk_label_set_text(GTK_LABEL(data->labelWin[9]), error);
 }
 
 void		on_clicked_add_monster(GtkWidget *addButton, t_winMonster *data)

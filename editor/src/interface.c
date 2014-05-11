@@ -5,7 +5,7 @@
 ** Login   <merran_g@epitech.net>
 **
 ** Started on  Sat May 10 16:30:59 2014 Geoffrey Merran
-** Last update Sun May 11 17:08:03 2014 Geoffrey Merran
+** Last update Sun May 11 19:50:58 2014 Geoffrey Merran
 */
 
 #define _BSD_SOURCE
@@ -35,11 +35,12 @@ void		init_winmap(t_winMap *winmap)
 {
   winmap->labelWin[0] = gtk_label_new("Epic Editor");
   winmap->labelWin[1] = gtk_label_new("Map Name");
+  winmap->labelWin[2] = gtk_label_new("");
   winmap->winButton[0] = gtk_button_new_with_label("Create Map");
   winmap->winButton[1] = gtk_button_new_with_label("Monster Editor");
   winmap->winButton[2] = gtk_button_new_with_label("Champion Editor");
   winmap->winButton[3] = gtk_button_new_with_label("Room Editor");
-  winmap->tableWin = gtk_table_new(5, 5, TRUE);
+  winmap->tableWin = gtk_table_new(6, 5, TRUE);
   winmap->mapEntry = gtk_entry_new_with_max_length(20);
   gtk_container_add(GTK_CONTAINER(winmap->mainWindow),
 		    GTK_WIDGET(winmap->tableWin));
@@ -49,6 +50,8 @@ void		init_winmap(t_winMap *winmap)
 		   2, 3, 1, 2);
   gtk_table_attach_defaults(GTK_TABLE(winmap->tableWin), winmap->mapEntry,
 		   2, 3, 2, 3);
+  gtk_table_attach_defaults(GTK_TABLE(winmap->tableWin), winmap->labelWin[2],
+  		   0, 5, 5, 6);
   init_button_winmap(winmap);
 }
 
@@ -62,10 +65,18 @@ void		on_clicked_createbutton(GtkWidget *button, t_winMap *data)
     {
       game->header->name = strdup((char *) text);
       printf("MapName changed to [%s]\n", text);
-      /* Si start room, end room, 1 champ, 1 monstre */
-      gtk_widget_destroy(data->mainWindow);
-      gtk_main_quit();
-      create_map();
+      if (game->header->start_room != NULL &&
+	  game->header->end_room != NULL &&
+	  game->champs != NULL &&
+	  game->monsters != NULL)
+	{
+	  gtk_widget_destroy(data->mainWindow);
+	  gtk_main_quit();
+	  create_map();
+	}
+      else
+	gtk_label_set_text(GTK_LABEL(data->labelWin[2]),
+			   "Need one start room, end room, one champ and one monster\n");
     }
 }
 

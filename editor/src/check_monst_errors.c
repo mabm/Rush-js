@@ -5,11 +5,10 @@
 ** Login   <mediav_j@epitech.net>
 ** 
 ** Started on  Sun May 11 18:51:12 2014 Jeremy Mediavilla
-** Last update Sun May 11 19:25:46 2014 Jeremy Mediavilla
+** Last update Sun May 11 20:10:11 2014 Geoffrey Merran
 */
 
 #include "parser.h"
-
 
 char		*is_valid_stats2(t_winMonster *data, int i, int j)
 {
