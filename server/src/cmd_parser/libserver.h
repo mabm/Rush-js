@@ -5,7 +5,7 @@
 ** Login   <jobertomeu@epitech.net>
 ** 
 ** Started on  Sat May 10 17:04:26 2014 Joris Bertomeu
-** Last update Sun May 11 18:18:24 2014 Laurent Fourrier
+** Last update Sun May 11 19:24:11 2014 Laurent Fourrier
 */
 
 #ifndef LIBSERVER_H_

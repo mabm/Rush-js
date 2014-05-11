@@ -5,7 +5,7 @@
 ** Login   <merran_g@epitech.net>
 **
 ** Started on  Sat May 10 12:14:15 2014 Geoffrey Merran
-** Last update Sun May 11 16:49:45 2014 Geoffrey Merran
+** Last update Sun May 11 18:58:32 2014 Jeremy Mediavilla
 */
 
 #ifndef PARSER_
@@ -145,5 +145,9 @@ void	write_attribut(int fd, char att);
 
 int	xopen(const char *pathname, int flags, mode_t mode);
 void	my_error(char *error);
+
+/* check functions */
+char	*check_champ_errors(t_winChampion *);
+char	*check_monst_errors(t_winMonster *);
 
 #endif /* PARSER_ */
