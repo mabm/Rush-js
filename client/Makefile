@@ -2,13 +2,23 @@ NAME	=	fantasy_client
 
 CC	=	cc -o $(NAME)
 
-SRC	=	./room/client_interpret_next.c	\
+SRC	=	./reception/room/client_interpret_next.c	\
+		./reception/who/client_interpret_who.c	\
+		./reception/client_champ.c	\
+		./reception/client_free_champ.c	\
+		./reception/client_list_champ.c	\
+		./reception/take_stats_champ.c	\
+		./reception/show_champ_list.c	\
+		./reception/show_monster_list.c	\
+		./reception/take_champ_client.c	\
+		./reception/str_to_wordtab_modified.c	\
+		./reception/client_interpret_attack.c	\
+		./reception/client_interpret_spe.c	\
 		./send/counts.c	\
 		./send/send.c	\
 		./send/str_to_wordtab.c	\
 		./send/xfree.c	\
 		./send/xmalloc.c	\
-		./who/client_interpret_who.c	\
 		./lib/destroy_wordarr.c	\
 		./lib/libclient.c	\
 		./lib/malloc.c	\
@@ -19,12 +29,14 @@ SRC	=	./room/client_interpret_next.c	\
 
 OBJ	=	$(SRC:.c=.o)
 
-CFLAGS	+=	-Wall -Werror -I./includes/
+LDFLAGS	=	-lmy -L./lib/libmy/
+
+CFLAGS	+=	-Wall -Werror -I./includes/ 
 
 all	:	$(NAME)
 
 $(NAME)	:	$(OBJ)
-	$(CC) $(OBJ)
+	$(CC) $(OBJ) $(LDFLAGS)
 
 clean	:
 	rm $(OBJ)
