@@ -5,7 +5,7 @@
 ** Login   <cruvei_t@epitech.net>
 ** 
 ** Started on  Sat May 10 14:19:51 2014 
-** Last update Sat May 10 19:59:56 2014 
+** Last update Sun May 11 16:34:40 2014 
 */
 
 #include <stdio.h>
@@ -61,4 +61,16 @@ char	*client_interpret_next_alive(char *query)
     return (NULL);
   rtn = utl_strcpy("Current Room isn't empty !\n");
   return (rtn);
+}
+
+char	*client_interpret_next(char *query)
+{
+  char	**request;
+
+  request = str_to_wordarr(query, " ");
+  if (request[0][0] == 'O')
+    return (client_interpret_next_ok(query));
+  else if (request[2][5] == 'T')
+    return (client_interpret_next_nexist(query));
+  return (client_interpret_next_alive(query));
 }

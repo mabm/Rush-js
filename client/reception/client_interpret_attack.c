@@ -5,7 +5,7 @@
 ** Login   <garcia_t@epitech.net>
 ** 
 ** Started on  Sat May 10 14:07:49 2014 garcia antoine
-** Last update Sun May 11 10:27:54 2014 
+** Last update Sun May 11 16:35:11 2014 
 */
 
 #include <stdlib.h>
@@ -111,7 +111,7 @@ char	*print_error(char *str)
   return (final);
 }
 
-char	*attack_monster(char *str)
+char	*client_interpret_attack(char *str)
 {
   char	**cmd;
   char	**get;
