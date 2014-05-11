@@ -5,7 +5,7 @@
 ** Login   <cruvei_t@epitech.net>
 ** 
 ** Started on  Sat May 10 14:19:51 2014 
-** Last update Sat May 10 16:33:16 2014 
+** Last update Sun May 11 16:34:40 2014 
 */
 
 #include <stdio.h>
@@ -19,6 +19,8 @@ char	*client_interpret_next_ok(char *query)
   char	**name;
   char	*rtn;
 
+  if (query == NULL)
+    return (NULL);
   packet = str_to_wordarr(query, " ");
   info = str_to_wordarr(packet[2], ",");
   name = str_to_wordarr(info[0], "=");
@@ -38,6 +40,8 @@ char	*client_interpret_next_nexist(char *query)
   char	**name;
   char	*rtn;
 
+  if (query == NULL)
+    return (NULL);
   packet = str_to_wordarr(query, " ");
   info = str_to_wordarr(packet[2], ",");
   name = str_to_wordarr(info[0], "=");
@@ -53,13 +57,20 @@ char	*client_interpret_next_alive(char *query)
 {
   char	*rtn;
 
+  if (query == NULL)
+    return (NULL);
   rtn = utl_strcpy("Current Room isn't empty !\n");
   return (rtn);
 }
 
-/* int	main(int ac, char **av) */
-/* { */
-/*   printf(client_interpret_next_nexist("OK NB:Value ROOM:NAME=room_name,AVD=advantage")); */
-/*   printf(client_interpret_next_ok("OK NB:Value ROOM:NAME=room_name,AVD=advantage")); */
-/*   printf(client_interpret_next_alive("OK NB:Value ROOM:NAME=room_name,AVD=advantage")); */
-/* } */
+char	*client_interpret_next(char *query)
+{
+  char	**request;
+
+  request = str_to_wordarr(query, " ");
+  if (request[0][0] == 'O')
+    return (client_interpret_next_ok(query));
+  else if (request[2][5] == 'T')
+    return (client_interpret_next_nexist(query));
+  return (client_interpret_next_alive(query));
+}

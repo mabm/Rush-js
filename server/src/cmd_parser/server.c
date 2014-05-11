@@ -5,10 +5,12 @@
 ** Login   <jobertomeu@epitech.net>
 ** 
 ** Started on  Sat May 10 14:45:14 2014 Joris Bertomeu
-** Last update Sun May 11 16:02:00 2014 Joris Bertomeu
+** Last update Sun May 11 17:08:06 2014 Joris Bertomeu
 */
 
 #include "libserver.h"
+#include "parsing.h"
+#include "world.h"
 
 void	print_error(char *str)
 {
@@ -90,7 +92,7 @@ void	check_new_client(t_libserver *libserver)
   free(addr_client);
 }
 
-int	main(int argc, char *argv[])
+int	server(t_world *world)
 {
   t_libserver	*libserver;
   fd_set	rfds;
@@ -140,7 +142,7 @@ int	main(int argc, char *argv[])
 		      libserver->n = read(libserver->fds[i], libserver->buffer, 4096);
 		      if (libserver->n < 0)
 			print_error("Socket Read error");
-		      parse_cmd(libserver->buffer, libserver->fds[i], libserver);
+		      parse_cmd(libserver->buffer, libserver->fds[i], libserver, world);
 		      /* parse_line(libserver->buffer, libserver->fds[i], libserver); */
 		    }
 		  i++;

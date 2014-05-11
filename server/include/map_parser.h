@@ -5,7 +5,7 @@
 ** Login   <fourri_l@epitech.net>
 **
 ** Started on  Sat May 10 15:37:28 2014 Laurent Fourrier
-** Last update Sat May 10 20:15:31 2014 Nicolas Ades
+** Last update Sun May 11 16:59:25 2014 Joris Bertomeu
 */
 
 #ifndef MAP_PARSER_H_
@@ -20,7 +20,7 @@
 # include <fcntl.h>
 # include "world.h"
 
-t_world	parse_map(char *file);
+t_world	*parse_map(char *file, t_world *world);
 
 int	parse_map_header(t_world *world, char *line);
 

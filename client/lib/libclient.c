@@ -5,9 +5,16 @@
 ** Login   <jobertomeu@epitech.net>
 ** 
 ** Started on  Sat May 10 15:21:44 2014 Joris Bertomeu
-** Last update Sat May 10 16:49:41 2014 Joris Bertomeu
+** Last update Sun May 11 15:48:27 2014 
 */
 
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <arpa/inet.h>
+#include <string.h>
 #include "libclient.h"
 
 void	print_error_lib(char *str)
@@ -55,12 +62,7 @@ void	send_str(char *str, char *ip, int port)
   init_lib(slib, ip, port);
   slib->flag = 1;
 
-  write(slib->to_server_socket, str, strlen(str));
-  read(slib->to_server_socket, slib->buffer, 4096);
-  printf("Réponse : ");
-  printf(slib->buffer);
-  printf("\n");
-
+ 
   shutdown(slib->to_server_socket, 2);
   close(slib->to_server_socket);
   free(slib);
