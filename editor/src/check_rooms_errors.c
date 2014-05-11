@@ -5,7 +5,7 @@
 ** Login   <mediav_j@epitech.net>
 ** 
 ** Started on  Sun May 11 19:33:43 2014 Jeremy Mediavilla
-** Last update Sun May 11 20:24:25 2014 Jeremy Mediavilla
+** Last update Sun May 11 21:02:35 2014 Jeremy Mediavilla
 */
 
 #define _BSD_SOURCE
@@ -61,9 +61,11 @@ char		*check_room_error(t_winRoom *data)
   if (GTK_TOGGLE_BUTTON(G_OBJECT(data->checkButton[0]))->active &&
       (GTK_TOGGLE_BUTTON(G_OBJECT(data->checkButton[1]))->active))
     return ("The room couldn't be the start AND the end room");
-  if ((error = check_error_button1()) != NULL)
+  if (GTK_TOGGLE_BUTTON(G_OBJECT(data->checkButton[0]))->active &&
+      (error = check_error_button1()) != NULL)
     return (error);
-  if ((error = check_error_button2()) != NULL)
+  if (GTK_TOGGLE_BUTTON(G_OBJECT(data->checkButton[1]))->active &&
+      (error = check_error_button2()) != NULL)
     return (error);
   return (NULL);
 }
