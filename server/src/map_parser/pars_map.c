@@ -5,19 +5,35 @@
 ** Login   <nicolas@epitech.net>
 ** 
 ** Started on  Sat May 10 15:58:21 2014 Nicolas Ades
-** Last update Sat May 10 21:43:59 2014 Laurent Fourrier
+** Last update Sun May 11 12:05:25 2014 Nicolas Ades
 */
 
 #include "world.h"
 #include "gnl.h"
 #include "map_parser.h"
 
+char		*auto_copy(char *dest, char *src, int size)
+{
+  int		i;
+  int		len;
+
+  i = 0;
+  len = size;
+  while (i <= len)
+    {
+      dest[i] = src[size];
+      i++;
+      size++;
+    }
+  dest[i] = '\0';
+  return (dest);
+}
+
 char		*auto_complete(char *dest, char *line, int i)
 {
   dest = malloc(line[i] + 2);
   i += 1;
-  dest = strncpy(dest, &line[i], line[i - 1]);
-  dest[(line[i - 1] + 1)] = '\0';
+  dest = auto_copy(dest, &line[i], line[i - 1]);
   return (dest);
 }
 
