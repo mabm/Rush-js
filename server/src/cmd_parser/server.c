@@ -5,7 +5,7 @@
 ** Login   <jobertomeu@epitech.net>
 ** 
 ** Started on  Sat May 10 14:45:14 2014 Joris Bertomeu
-** Last update Sun May 11 17:49:18 2014 Joris Bertomeu
+** Last update Sun May 11 18:53:22 2014 Joris Bertomeu
 */
 
 #include "libserver.h"
@@ -101,7 +101,7 @@ int	server(t_world *world)
   int		max;
 
   libserver = malloc(sizeof(*libserver));
-  init_lib(libserver, 33667);
+  init_lib(libserver, 33668);
   libserver->world = world;
   listen(libserver->sockfd, 5);
   printf("Waiting connection on port %d ...\n", libserver->portno);
@@ -139,7 +139,7 @@ int	server(t_world *world)
 		{
 		  if (FD_ISSET(libserver->fds[i], &rfds) == 1)
 		    {
-		      memset(libserver->buffer, 0, 256);
+		      memset(libserver->buffer, 0, 4096);
 		      libserver->n = read(libserver->fds[i], libserver->buffer, 4096);
 		      if (libserver->n < 0)
 			print_error("Socket Read error");
