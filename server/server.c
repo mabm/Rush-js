@@ -5,7 +5,7 @@
 ** Login   <jobertomeu@epitech.net>
 ** 
 ** Started on  Sat May 10 14:45:14 2014 Joris Bertomeu
-** Last update Sat May 10 20:57:48 2014 Joris Bertomeu
+** Last update Sun May 11 15:57:37 2014 Joris Bertomeu
 */
 
 #include "libserver.h"
@@ -25,9 +25,10 @@ void	parse_line(char *buff, int fd_ok, t_libserver *libserver)
   addr_client = malloc((INET_ADDRSTRLEN + 15) * sizeof(char));
   inet_ntop(AF_INET, &(libserver->cli_addr[0].sin_addr.s_addr),
 	    addr_client, INET_ADDRSTRLEN);
-  sprintf(tmp, "Bonjour %s\n", addr_client);
   printf("%s a envoyé %s\n", addr_client, buff);
-  /* write(fd_ok, tmp, strlen(tmp) + 1); */
+  printf("Envoyer à %s -> \n", addr_client);
+  read(0, tmp, 4096);
+  write(fd_ok, tmp, strlen(tmp) + 1);
 }
 
 void	init_lib(t_libserver *libserver, int port)
@@ -89,7 +90,7 @@ void	check_new_client(t_libserver *libserver)
   free(addr_client);
 }
 
-int main( int argc, char *argv[])
+int	main(int argc, char *argv[])
 {
   t_libserver	*libserver;
   fd_set	rfds;
@@ -98,7 +99,7 @@ int main( int argc, char *argv[])
   int		max;
 
   libserver = malloc(sizeof(*libserver));
-  init_lib(libserver, 33668);
+  init_lib(libserver, 33667);
   listen(libserver->sockfd, 5);
   printf("Waiting connection on port %d ...\n", libserver->portno);
   while (1)
@@ -128,21 +129,21 @@ int main( int argc, char *argv[])
 	      if (libserver->newsockfd < 0)
 		print_error("Acception client error");
 	    }
-	  else if (FD_ISSET(libserver->fds[0], &rfds) == 1)
+	  else
 	    {
-	      memset(libserver->buffer, 0, 256);
-	      libserver->n = read(libserver->newsockfd, libserver->buffer, 4096);
-	      if (libserver->n < 0)
-		print_error("Socket Read error");
-	      parse_line(libserver->buffer, libserver->newsockfd, libserver);
-	    }
-	  else if (FD_ISSET(libserver->fds[1], &rfds) == 1)
-	    {
-	      memset(libserver->buffer, 0, 256);
-	      libserver->n = read(libserver->newsockfd, libserver->buffer, 4096);
-	      if (libserver->n < 0)
-		print_error("Socket Read error");
-	      parse_line(libserver->buffer, libserver->newsockfd, libserver);
+	      i = 0;
+	      while (i < 6)
+		{
+		  if (FD_ISSET(libserver->fds[i], &rfds) == 1)
+		    {
+		      memset(libserver->buffer, 0, 256);
+		      libserver->n = read(libserver->fds[i], libserver->buffer, 4096);
+		      if (libserver->n < 0)
+			print_error("Socket Read error");
+		      parse_line(libserver->buffer, libserver->fds[i], libserver);
+		    }
+		  i++;
+		}
 	    }
 	}
       else
