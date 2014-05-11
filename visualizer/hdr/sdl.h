@@ -14,7 +14,6 @@
 # include <stdio.h>
 # include <term.h>
 # include <time.h>
-# include "test.h"
 
 typedef struct s_champ
 {
