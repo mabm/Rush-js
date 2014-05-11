@@ -5,14 +5,15 @@
 ** Login   <valer@epitech.net>
 **
 ** Started on  Fri May  9 22:31:21 2014 Valerian Polizzi
-** Last update Sun May 11 16:05:09 2014 Joris Bertomeu
+** Last update Sun May 11 17:07:28 2014 Joris Bertomeu
 */
 
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-#include "../../include/parsing.h"
+#include "parsing.h"
 #include "libserver.h"
+#include "world.h"
 
 char		*get_opt(char *cmd)
 {
@@ -38,7 +39,7 @@ int		check_cmd(char *cmd_tab, char *cmd)
   return (1);
 }
 
-int	       parse_cmd(char *cmd, int id, t_libserver *libserver)
+int	       parse_cmd(char *cmd, int id, t_libserver *libserver, t_world *world)
 {
   char		*tab[6];
   t_fonc_tab	fonc_tab[5];

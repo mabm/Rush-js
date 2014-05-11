@@ -5,7 +5,7 @@
 ** Login   <nicolas@epitech.net>
 ** 
 ** Started on  Sat May 10 15:58:21 2014 Nicolas Ades
-** Last update Sun May 11 14:20:28 2014 Jeremy Mediavilla
+** Last update Sun May 11 16:59:13 2014 Joris Bertomeu
 */
 
 #include "world.h"
@@ -49,15 +49,13 @@ int		pars_map_header(t_world *world, char *line)
   return (1);
 }
 
-t_world		parse_map(char *file)
+t_world		*parse_map(char *file, t_world *world)
 {
-  t_world	world;
   int		i;
   int		fd;
   char		**info;
 
   i = 0;
-  world = init_world();
   info = malloc(100 * sizeof(*info));
   if ((fd = open(file, O_RDONLY)) == -1)
     {
@@ -68,13 +66,13 @@ t_world		parse_map(char *file)
     i++;
   info[99] = NULL;
   close(fd);
-  pars_map_header(&world, info[0]);
+  pars_map_header(world, info[0]);
   i = 0;
   while (info[i])
-    parse_map_elem(&world, info[i++]);
+    parse_map_elem(world, info[i++]);
   printf("\nMAP INFO\n");
-  printf("name : %s\n", world.game_name);
-  printf("start : %s\n", world.start_room);
-  printf("end : %s\n", world.end_room);
+  printf("name : %s\n", world->game_name);
+  printf("start : %s\n", world->start_room);
+  printf("end : %s\n", world->end_room);
   return (world);
 }

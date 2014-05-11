@@ -1,15 +1,6 @@
-##
-## Makefile for  in /home/nicolas/Workspace/rush/rush_promo_js/server
-## 
-## Made by Nicolas Ades
-## Login   <nicolas@epitech.net>
-## 
-## Started on  Sat May 10 13:21:17 2014 Nicolas Ades
-## Last update Sat May 10 21:44:21 2014 Laurent Fourrier
-##
-
 SRC	=	src/main.c				\
 		src/cmd_parser/cmd_parsing.c		\
+		src/cmd_parser/server.c			\
 		src/cmd_parser/commands.c		\
 		src/map_parser/parse_map_champ.c	\
 		src/map_parser/parse_map_elem.c		\
@@ -30,7 +21,7 @@ CC	=	gcc -g
 
 RM	=	rm -f
 
-CFLAGS	+=	-W -Wall -Wextra -Werror -pedantic -ansi -g3 -iquoteinclude \
+CFLAGS	+=	-g3 -iquoteinclude \
 		-Ilib/tlist/include
 
 LDFLAGS +=	-Llib/tlist/ -ltlist \
