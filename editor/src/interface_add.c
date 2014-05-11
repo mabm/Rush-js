@@ -5,7 +5,7 @@
 ** Login   <merran_g@epitech.net>
 ** 
 ** Started on  Sun May 11 03:01:32 2014 Geoffrey Merran
-** Last update Sun May 11 16:50:23 2014 Geoffrey Merran
+** Last update Sun May 11 17:46:34 2014 Geoffrey Merran
 */
 
 #include "parser.h"
@@ -13,6 +13,7 @@
 void		on_clicked_add_champ(GtkWidget *addButton, t_winChampion *data)
 {
   (void) addButton;
+
   add_champion(data, &game->champs);
 }
 
