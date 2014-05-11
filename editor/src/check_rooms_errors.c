@@ -5,7 +5,7 @@
 ** Login   <mediav_j@epitech.net>
 ** 
 ** Started on  Sun May 11 19:33:43 2014 Jeremy Mediavilla
-** Last update Sun May 11 21:02:35 2014 Jeremy Mediavilla
+** Last update Sun May 11 21:17:11 2014 Jeremy Mediavilla
 */
 
 #define _BSD_SOURCE
@@ -50,7 +50,7 @@ char		*check_room_error(t_winRoom *data)
   else if (is_already_this_room((char *) text) == 1)
     return ("This room already exist");
   text = gtk_entry_get_text(GTK_ENTRY(data->attEntry[1]));
-  if (text[0] == '\0')
+  if (text == NULL)
     gtk_entry_set_text(GTK_ENTRY(data->attEntry[1]), "NONE");
   text = gtk_entry_get_text(GTK_ENTRY(data->attEntry[2]));
   if (text[0] == '\0')
