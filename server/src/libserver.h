@@ -5,7 +5,7 @@
 ** Login   <jobertomeu@epitech.net>
 ** 
 ** Started on  Sat May 10 17:04:26 2014 Joris Bertomeu
-** Last update Sun May 11 15:04:48 2014 Joris Bertomeu
+** Last update Sat May 10 20:12:06 2014 Joris Bertomeu
 */
 
 #ifndef LIBSERVER_H_
@@ -16,7 +16,7 @@
 # include <sys/socket.h>
 # include <netinet/in.h>
 # include <fcntl.h>
-# include <string.h>
+
 # include <stdlib.h>
 # include <sys/time.h>
 # include <sys/types.h>
