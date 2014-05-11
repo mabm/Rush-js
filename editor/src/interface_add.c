@@ -5,7 +5,7 @@
 ** Login   <merran_g@epitech.net>
 ** 
 ** Started on  Sun May 11 03:01:32 2014 Geoffrey Merran
-** Last update Sun May 11 19:09:39 2014 Geoffrey Merran
+** Last update Sun May 11 20:09:55 2014 Jeremy Mediavilla
 */
 
 #include "parser.h"
@@ -15,16 +15,11 @@ void		on_clicked_add_champ(GtkWidget *addButton, t_winChampion *data)
   char		*error;
 
   (void) addButton;
-<<<<<<< HEAD
-
-  add_champion(data, &game->champs);
-=======
   error = check_champ_errors(data);
   if (error == NULL)
     add_champion(data, &game->champs);
   else
     printf("%s\n", error);
->>>>>>> 1c75aa441545211c3ce129b899ec0dd32f3ed1ae
 }
 
 void		on_clicked_add_monster(GtkWidget *addButton, t_winMonster *data)
@@ -41,6 +36,12 @@ void		on_clicked_add_monster(GtkWidget *addButton, t_winMonster *data)
 
 void		on_clicked_add_room(GtkWidget *addButton, t_winRoom *data)
 {
+  char		*error;
+
   (void) addButton;
-  add_room(data, &game->rooms);
+  error = check_room_error(data);
+  if (error == NULL)
+    add_room(data, &game->rooms);
+  else
+    printf("%s\n", error);
 }
