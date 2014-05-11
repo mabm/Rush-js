@@ -5,7 +5,7 @@
 ** Login   <jobertomeu@epitech.net>
 ** 
 ** Started on  Sat May 10 17:04:26 2014 Joris Bertomeu
-** Last update Sun May 11 17:48:36 2014 Joris Bertomeu
+** Last update Sun May 11 18:16:54 2014 Joris Bertomeu
 */
 
 #ifndef LIBSERVER_H_
@@ -45,6 +45,7 @@ struct s_libserver
   int			id_client;
   t_clients		clients[6];
   int			fds[6];
+  int			fdtmp;
 };
 
 #endif /* LIBSERVER_H_ */
