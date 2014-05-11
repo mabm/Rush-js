@@ -5,7 +5,7 @@
 ** Login   <valer@epitech.net>
 **
 ** Started on  Fri May  9 22:31:21 2014 Valerian Polizzi
-** Last update Sun May 11 17:46:14 2014 Joris Bertomeu
+** Last update Sun May 11 18:17:42 2014 Laurent Fourrier
 */
 
 #include <stdio.h>
@@ -46,6 +46,7 @@ int	       parse_cmd(char *cmd, int id, t_libserver *libserver, t_world *world)
   int		i;
 
   i = 0;
+  libserver->fdtmp = id;
   printf("Commande : %s\n", cmd);
   fonc_tab[0] = &is_next;
   fonc_tab[1] = &is_list_team;
