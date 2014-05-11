@@ -5,7 +5,7 @@
 ** Login   <merran_g@epitech.net>
 ** 
 ** Started on  Sun May 11 03:01:32 2014 Geoffrey Merran
-** Last update Sun May 11 20:21:59 2014 Geoffrey Merran
+** Last update Sun May 11 21:39:52 2014 Geoffrey Merran
 */
 
 #include "parser.h"
@@ -42,6 +42,12 @@ void		on_clicked_add_monster(GtkWidget *addButton, t_winMonster *data)
 
 void		on_clicked_add_room(GtkWidget *addButton, t_winRoom *data)
 {
+  char		*error;
+
   (void) addButton;
-  add_room(data, &game->rooms);
+  error = check_room_error(data);
+  if (error == NULL)
+    add_room(data, &game->rooms);
+  else
+    printf("%s\n", error);
 }

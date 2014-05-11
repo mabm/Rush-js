@@ -5,7 +5,7 @@
 ## Login   <merran_g@epitech.net>
 ## 
 ## Started on  Mon Oct 21 13:28:05 2013 Geoffrey Merran
-## Last update Sun May 11 18:56:53 2014 Jeremy Mediavilla
+## Last update Sun May 11 20:10:55 2014 Jeremy Mediavilla
 ##
 
 RM	= rm -f
@@ -34,6 +34,7 @@ SRC	= src/main.c			\
 	src/xfunction.c			\
 	src/check_champ_errors.c	\
 	src/check_monst_errors.c	\
+	src/check_rooms_errors.c	\
 
 all:		libs $(NAME)
 
