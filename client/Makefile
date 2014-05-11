@@ -14,6 +14,8 @@ SRC	=	./reception/room/client_interpret_next.c	\
 		./reception/str_to_wordtab_modified.c	\
 		./reception/client_interpret_attack.c	\
 		./reception/client_interpret_spe.c	\
+		./send/interpret_client_cmd.c	\
+		./reception/main.c	\
 		./send/counts.c	\
 		./send/send.c	\
 		./send/str_to_wordtab.c	\
@@ -29,7 +31,7 @@ SRC	=	./reception/room/client_interpret_next.c	\
 
 OBJ	=	$(SRC:.c=.o)
 
-LDFLAGS	=	-lmy -L./lib/libmy/
+LDFLAGS	=	-lmy -L./lib/libmy/ -lpthread
 
 CFLAGS	+=	-Wall -Werror -I./includes/ 
 

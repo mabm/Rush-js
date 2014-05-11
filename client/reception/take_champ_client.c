@@ -5,7 +5,7 @@
 ** Login   <thibau_j@epitech.net>
 **
 ** Started on  Sat May 10 04:14:58 2014 thibau_j
-** Last update Sat May 10 22:20:05 2014 
+** Last update Sun May 11 15:52:59 2014 
 */
 
 #include <stdlib.h>
@@ -115,11 +115,10 @@ void		function_read(char *buff)
   my_printf("my choice : \nname : %s\n", champ.name);
   show_champ_list(buff);
   show_monster_list(buff);
-
 }
 
-int	main(int ac, char **av)
-{
-  function_read(av[1]);
-  return (0);
-}
+/* int	main(int ac, char **av) */
+/* { */
+/*   function_read(av[1]); */
+/*   return (0); */
+/* } */

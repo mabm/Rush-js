@@ -5,14 +5,14 @@
 ** Login   <cruvei_t@epitech.net>
 ** 
 ** Started on  Sat May 10 19:19:43 2014 
-** Last update Sat May 10 19:25:57 2014 
+** Last update Sun May 11 16:32:58 2014 
 */
 
 #include <stdio.h>
 #include <stdlib.h>
 #include "tutils.h"
 
-char	*who(char *query)
+char	*client_interpret_who(char *query)
 {
   char	**packet;
   char	**info;
