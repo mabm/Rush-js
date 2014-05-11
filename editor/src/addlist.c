@@ -5,7 +5,7 @@
 ** Login   <merran_g@epitech.net>
 ** 
 ** Started on  Sun May 11 15:37:19 2014 Geoffrey Merran
-** Last update Sun May 11 16:57:58 2014 Geoffrey Merran
+** Last update Sun May 11 20:19:25 2014 Jeremy Mediavilla
 */
 
 #define _BSD_SOURCE
@@ -37,8 +37,7 @@ void		add_champion(t_winChampion *data, t_champ **champs)
 	 new->name, new->type);
   printf("Stats - Hp: %s, Spe: %s, Speed: %s\n",
 	 new->hp, new->spe, new->speed);
-  printf("Weapon : [%s] - Armor : [%s]\n", new->weapon, new->armor);
-  printf("===============\n");
+  printf("Weapon : [%s] - Armor : [%s]\n=========\n", new->weapon, new->armor);
 }
 
 void		add_monster(t_winMonster *data, t_monster **monsters)
@@ -82,9 +81,9 @@ void		add_room(t_winRoom *data, t_room **rooms)
 						 GTK_ENTRY(data->attEntry[3])));
   new->next = *rooms;
   *rooms = new;
-  if (GTK_TOGGLE_BUTTON ((GtkWidget *) G_OBJECT(data->checkButton[0]))->active)
+  if (GTK_TOGGLE_BUTTON(G_OBJECT(data->checkButton[0]))->active)
     game->header->start_room = new;
-  if (GTK_TOGGLE_BUTTON ((GtkWidget *) G_OBJECT(data->checkButton[1]))->active)
+  if (GTK_TOGGLE_BUTTON(G_OBJECT(data->checkButton[1]))->active)
     {
       printf("End room\n");
       game->header->end_room = new;

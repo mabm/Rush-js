@@ -5,7 +5,7 @@
 ** Login   <merran_g@epitech.net>
 **
 ** Started on  Sat May 10 22:14:18 2014 Geoffrey Merran
-** Last update Sun May 11 03:07:51 2014 Geoffrey Merran
+** Last update Sun May 11 20:23:47 2014 Geoffrey Merran
 */
 
 #include "parser.h"
@@ -48,16 +48,17 @@ void		pos_att_monster(t_winMonster *winmonster)
 void		init_winmonster(t_winMonster *winmonster)
 {
   winmonster->labelWin[0] = gtk_label_new("Monster Editor");
+  winmonster->labelWin[8] = gtk_label_new("");
   winmonster->winButton[0] = gtk_button_new_with_label("Add");
   winmonster->winButton[1] = gtk_button_new_with_label("Previous");
-  winmonster->tableWin = gtk_table_new(10, 4, TRUE);
+  winmonster->tableWin = gtk_table_new(11, 4, TRUE);
   gtk_container_add(GTK_CONTAINER(winmonster->mainWindow),
 		    GTK_WIDGET(winmonster->tableWin));
   create_att_monster(winmonster);
   pos_att_monster(winmonster);
   gtk_table_attach_defaults(GTK_TABLE(winmonster->tableWin),
-				winmonster->labelWin[0],
-				1, 3, 0, 1);
+			    winmonster->labelWin[0],
+			    1, 3, 0, 1);
   gtk_table_attach(GTK_TABLE(winmonster->tableWin), winmonster->winButton[0],
 		   1, 2, 8, 9,
 		   GTK_EXPAND | GTK_FILL, GTK_EXPAND,
@@ -66,6 +67,9 @@ void		init_winmonster(t_winMonster *winmonster)
 		   2, 3, 8, 9,
 		   GTK_EXPAND | GTK_FILL, GTK_EXPAND,
 		   0, 0);
+  gtk_table_attach_defaults(GTK_TABLE(winmonster->tableWin),
+			    winmonster->labelWin[8],
+			    0, 4, 9, 10);
 }
 
 void		on_clicked_next_monster(GtkWidget *prevButton, t_winMonster *data)

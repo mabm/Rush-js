@@ -5,7 +5,7 @@
 ** Login   <merran_g@epitech.net>
 ** 
 ** Started on  Sun May 11 03:01:32 2014 Geoffrey Merran
-** Last update Sun May 11 18:56:09 2014 Jeremy Mediavilla
+** Last update Sun May 11 21:39:52 2014 Geoffrey Merran
 */
 
 #include "parser.h"
@@ -17,9 +17,12 @@ void		on_clicked_add_champ(GtkWidget *addButton, t_winChampion *data)
   (void) addButton;
   error = check_champ_errors(data);
   if (error == NULL)
-    add_champion(data, &game->champs);
+    {
+      add_champion(data, &game->champs);
+      gtk_label_set_text(GTK_LABEL(data->labelWin[9]), "");
+    }
   else
-    printf("%s\n", error);
+    gtk_label_set_text(GTK_LABEL(data->labelWin[9]), error);
 }
 
 void		on_clicked_add_monster(GtkWidget *addButton, t_winMonster *data)
@@ -29,13 +32,22 @@ void		on_clicked_add_monster(GtkWidget *addButton, t_winMonster *data)
   (void) addButton;
   error = check_monst_errors(data);
   if (error == NULL)
-    add_monster(data, &game->monsters);
+    {
+      add_monster(data, &game->monsters);
+      gtk_label_set_text(GTK_LABEL(data->labelWin[8]), "");
+    }
   else
-    printf("%s\n", error);
+    gtk_label_set_text(GTK_LABEL(data->labelWin[8]), error);
 }
 
 void		on_clicked_add_room(GtkWidget *addButton, t_winRoom *data)
 {
+  char		*error;
+
   (void) addButton;
-  add_room(data, &game->rooms);
+  error = check_room_error(data);
+  if (error == NULL)
+    add_room(data, &game->rooms);
+  else
+    printf("%s\n", error);
 }

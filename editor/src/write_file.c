@@ -5,7 +5,7 @@
 ** Login   <merran_g@epitech.net>
 ** 
 ** Started on  Sat May 10 13:58:16 2014 Geoffrey Merran
-** Last update Sun May 11 16:15:32 2014 Geoffrey Merran
+** Last update Sun May 11 19:19:48 2014 Geoffrey Merran
 */
 
 #include "parser.h"
@@ -64,7 +64,6 @@ void	write_header(int fd, t_header *header)
   write_string(fd, header->start_room->name);
   write_attribut(fd, SEP_SECTION);
 }
-
 
 void	write_champ(int fd, t_champ *champ)
 {
