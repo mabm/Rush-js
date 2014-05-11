@@ -5,7 +5,7 @@
 ** Login   <nicolas@epitech.net>
 ** 
 ** Started on  Sat May 10 15:58:21 2014 Nicolas Ades
-** Last update Sun May 11 12:05:25 2014 Nicolas Ades
+** Last update Sun May 11 12:34:20 2014 Nicolas Ades
 */
 
 #include "world.h"
@@ -47,7 +47,7 @@ int		pars_map_header(t_world *world, char *line)
       printf("Error: Unrecognize file\n");
       exit(-1);
     }
-  i += 4;
+  i += 3;
   world->game_name = auto_complete(world->game_name, line, i);
   i += line[i];
   i += 2;
