@@ -5,7 +5,7 @@
 ** Login   <merran_g@epitech.net>
 ** 
 ** Started on  Sun May 11 03:01:32 2014 Geoffrey Merran
-** Last update Sun May 11 20:06:14 2014 Geoffrey Merran
+** Last update Sun May 11 20:21:59 2014 Geoffrey Merran
 */
 
 #include "parser.h"
@@ -32,9 +32,12 @@ void		on_clicked_add_monster(GtkWidget *addButton, t_winMonster *data)
   (void) addButton;
   error = check_monst_errors(data);
   if (error == NULL)
-    add_monster(data, &game->monsters);
+    {
+      add_monster(data, &game->monsters);
+      gtk_label_set_text(GTK_LABEL(data->labelWin[8]), "");
+    }
   else
-    printf("%s\n", error);
+    gtk_label_set_text(GTK_LABEL(data->labelWin[8]), error);
 }
 
 void		on_clicked_add_room(GtkWidget *addButton, t_winRoom *data)
