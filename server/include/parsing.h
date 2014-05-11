@@ -5,15 +5,17 @@
 ** Login   <valer@epitech.net>
 **
 ** Started on  Sat May 10 01:38:36 2014 Valerian Polizzi
-** Last update Sat May 10 01:51:14 2014 Valerian Polizzi
+** Last update Sun May 11 16:05:47 2014 Joris Bertomeu
 */
 
 #ifndef PARSING_H_
 # define PARSING_H_
 
+#include "libserver.h"
+
 typedef  char*(*t_fonc_tab)(char*);
 
-int	parse_cmd(char *cmd);
+int	parse_cmd(char *cmd, int id, t_libserver *libserver);
 int	check_cmd(char *cmd_tab, char *cmd);
 char	*get_opt(char *cmd);
 char	*is_next(char *arg);
