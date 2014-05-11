@@ -5,7 +5,7 @@
 ** Login   <fourri_l@epitech.net>
 ** 
 ** Started on  Sat May 10 16:58:49 2014 Laurent Fourrier
-** Last update Sat May 10 20:30:06 2014 Laurent Fourrier
+** Last update Sat May 10 22:17:25 2014 Laurent Fourrier
 */
 
 #include <stdlib.h>
@@ -36,6 +36,7 @@ static int	get_wordarr_len(char *str, char *seps)
 	  if (in_word)
 	    rtn++;
 	}
+      str++;
     }
   return (rtn);
 }
@@ -45,7 +46,7 @@ char		**str_to_wordarr(char *str, char *seps)
   char		**rtn;
   int		it;
 
-  rtn = malloc(get_wordarr_len(str, seps) * sizeof(void*));
+  rtn = malloc((get_wordarr_len(str, seps) + 2) * sizeof(void*));
   if (!rtn)
     return (NULL);
   it = 0;
