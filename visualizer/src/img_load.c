@@ -5,7 +5,7 @@
 ** Login   <charvo_a@epitech.net>
 **
 ** Started on  Sat May 10 15:15:38 2014 Nicolas Charvoz
-** Last update Sun May 11 17:16:05 2014 Nicolas Charvoz
+** Last update Sun May 11 18:36:10 2014 Nicolas Charvoz
 */
 
 #include "../hdr/sdl.h"
@@ -60,6 +60,8 @@ void	img_load_menu(t_main *m, t_choice *c)
   c->prev = IMG_Load("/tmp/buttons/prev.png");
   c->next = NULL;
   c->next = IMG_Load("/tmp/buttons/next.png");
+  c->select = NULL;
+  c->select = IMG_Load("/tmp/buttons/select.png");
   c->info_police = TTF_OpenFont("/tmp/fonts/info.ttf", 14);
   c->main_police = TTF_OpenFont("/tmp/fonts/main.ttf", 14);
   c->pos_bio.x = 580;

@@ -25,18 +25,24 @@ void	init_perso(t_list_champ **list, t_champ *champ, int i, t_main *m, t_choice 
     {
       c->pos_next.x = 685;
       c->pos_next.y = 540;
+      c->pos_select.x = 345;
+      c->pos_select.y = 540;
       SDL_BlitSurface(c->next, NULL, m->ecran, &c->pos_next);
     }
   else if (i == 5) /* NBR DE MONSTRES TOTAL ENVOYE PAR EDITEUR */
     {
       c->pos_prev.x = 0;
       c->pos_prev.y = 540;
+      c->pos_select.x = 345;
+      c->pos_select.y = 540;
       SDL_BlitSurface(c->prev, NULL, m->ecran, &c->pos_prev);
     }
   else
     {
       c->pos_prev.x = 0;
       c->pos_prev.y = 540;
+      c->pos_select.x = 345;
+      c->pos_select.y = 540;
       c->pos_next.x = 685;
       c->pos_next.y = 540;
     }

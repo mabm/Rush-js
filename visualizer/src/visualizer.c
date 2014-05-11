@@ -1,4 +1,4 @@
-#include "../hdr/sdl.h"
+include "../hdr/sdl.h"
 
 int	visu_menu(t_list_champ **list)
 {
