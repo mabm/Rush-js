@@ -5,7 +5,7 @@
 ** Login   <fourri_l@epitech.net>
 ** 
 ** Started on  Sat May 10 19:16:01 2014 Laurent Fourrier
-** Last update Sun May 11 19:22:05 2014 Laurent Fourrier
+** Last update Sun May 11 22:37:03 2014 Joris Bertomeu
 */
 
 #include <stdlib.h>
@@ -21,11 +21,11 @@ static t_class	get_class(char *line)
   t_class	rtn;
 
   line = read_string(line);
-  if (strcmp(line, "warrior") == 0)
+  if (strcmp(line, "WARRIOR") == 0)
     rtn = WARRIOR;
-  else if (strcmp(line, "wizard") == 0)
+  else if (strcmp(line, "WIZARD") == 0)
     rtn = WIZARD;
-  else if (strcmp(line, "templar") == 0)
+  else if (strcmp(line, "TEMPLAR") == 0)
     rtn = TEMPLAR;
   else
     rtn = WARRIOR;

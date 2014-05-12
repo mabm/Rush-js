@@ -5,11 +5,8 @@
 ** Login   <valer@epitech.net>
 **
 ** Started on  Fri May  9 22:31:21 2014 Valerian Polizzi
-<<<<<<< HEAD
-** Last update Sun May 11 19:59:01 2014 Nicolas Ades
-=======
+** Last update Mon May 12 12:33:17 2014 Joris Bertomeu
 ** Last update Sun May 11 19:24:46 2014 Laurent Fourrier
->>>>>>> 0bd0cc6547124eed8d200c6735ea23c2b81364d2
 */
 
 #include <stdio.h>
@@ -38,8 +35,6 @@ char		*get_opt(char *cmd, t_libserver *libserver)
 
 int		check_cmd(char *cmd_tab, char *cmd)
 {
-  printf("TEEST OK\n");
-  printf("CMD TAB : >%s<\n", cmd_tab);
   if (strncmp(cmd_tab, cmd, strlen(cmd_tab)) == 0)
     return (0);
   return (1);
@@ -55,8 +50,12 @@ char		*decoupage(char *cmd)
 
 int	       parse_cmd(char *cmd, int id, t_libserver *libserver, t_world *world)
 {
-  
-  if (strncmp(cmd, "attack", 6) == 0)
+  libserver->fdtmp = id;
+  if (strncmp(cmd, "attack_spe", 10) == 0)
+    {
+      is_attack_spe(decoupage(cmd), libserver);
+    }
+  else if (strncmp(cmd, "attack", 6) == 0)
     {
       is_attack(decoupage(cmd), libserver);
     }
@@ -67,10 +66,6 @@ int	       parse_cmd(char *cmd, int id, t_libserver *libserver, t_world *world)
   else if (strncmp(cmd, "list_team", 9) == 0)
     {
       is_list_team(decoupage(cmd), libserver);
-    }
-  else if (strncmp(cmd, "attack_spe", 10) == 0)
-    {
-      is_attack_spe(decoupage(cmd), libserver);
     }
   else if (strncmp(cmd, "who", 3) == 0)
     {
@@ -83,9 +78,9 @@ int	       parse_cmd(char *cmd, int id, t_libserver *libserver, t_world *world)
   else
     {
       printf("Unknown command : %s\n", cmd);
+      write(get_fd_from_id(libserver->current_id_fd, libserver),
+	    "Unknown command", strlen("Unknown command"));
       return (-1);
     }
-  libserver->fdtmp = id;
-  printf("Commande : %s\n", cmd);
   return (0);
 }

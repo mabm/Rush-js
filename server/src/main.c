@@ -5,7 +5,7 @@
 ** Login   <nicolas@epitech.net>
 ** 
 ** Started on  Sat May 10 13:24:57 2014 Nicolas Ades
-** Last update Sun May 11 17:05:14 2014 Joris Bertomeu
+** Last update Mon May 12 01:39:49 2014 Joris Bertomeu
 */
 
 #include <stdio.h>
@@ -16,9 +16,9 @@ int	main(int ac, char **av)
 {
   t_world	*world;
 
-  if (ac != 2)
+  if (ac != 3)
     {
-      printf("USAGE: ./server [GAME FILE]\n");
+      printf("USAGE: ./server [GAME FILE] <Port>\n");
       return (-1);
     }
   else
@@ -26,7 +26,7 @@ int	main(int ac, char **av)
       world = malloc(sizeof(t_world));
       *world = init_world();
       world = parse_map(av[1], world);
-      server(world);
+      server(world, atoi(av[2]));
     }
   return (0);
 }

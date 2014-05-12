@@ -5,7 +5,7 @@
 ** Login   <mediav_j@epitech.net>
 ** 
 ** Started on  Sat May 10 19:06:33 2014 Jeremy Mediavilla
-** Last update Sat May 10 22:11:41 2014 Jeremy Mediavilla
+** Last update Mon May 12 11:55:00 2014 Joris Bertomeu
 */
 
 #include "world.h"
@@ -93,6 +93,7 @@ int		parse_map_monster(t_world *world, char *line)
 {
   int		i;
   t_monsters	*monster;
+  static int	numb = 0;
 
   monster = malloc(sizeof(t_monsters));
   i = get_monster_name(monster, line);
@@ -101,6 +102,7 @@ int		parse_map_monster(t_world *world, char *line)
   monster->speed = get_monster_val(line, &i);
   monster->damage = get_monster_val(line, &i);
   monster->weapon = get_monster_w_a(line, &i);
+  monster->id = numb++;
   i--;
   monster->armor =get_monster_w_a(line, &i);
   aff_monsters(monster);

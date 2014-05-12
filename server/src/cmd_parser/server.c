@@ -5,7 +5,7 @@
 ** Login   <jobertomeu@epitech.net>
 ** 
 ** Started on  Sat May 10 14:45:14 2014 Joris Bertomeu
-** Last update Sun May 11 18:53:22 2014 Joris Bertomeu
+** Last update Mon May 12 11:13:17 2014 Joris Bertomeu
 */
 
 #include "libserver.h"
@@ -33,8 +33,18 @@ void	parse_line(char *buff, int fd_ok, t_libserver *libserver)
   write(fd_ok, tmp, strlen(tmp) + 1);
 }
 
+void	init_clients(t_libserver *libserver)
+{
+  int	i;
+
+  i = 0;
+  while (i < 7)
+    libserver->clients[i++].active = 0;
+}
+
 void	init_lib(t_libserver *libserver, int port)
 {
+  init_clients(libserver);
   libserver->portno = port;
   libserver->id_client = 0;
   if ((libserver->sockfd = socket(AF_INET, SOCK_STREAM, 0)) < 0)
@@ -48,10 +58,88 @@ void	init_lib(t_libserver *libserver, int port)
     print_error("Bind error");
 }
 
+void	aff_carac_player(t_libserver *libserver)
+{
+  printf("\n=>Player caracteristic\n");
+  printf("=>Active : %d\n", libserver->clients[libserver->id_client].active);
+  printf("=>Id : %d\n", libserver->clients[libserver->id_client].id);
+  printf("=>IdSock : %d\n", libserver->clients[libserver->id_client].idsock);
+  printf("=>Champion : %s\n\n",
+	 libserver->clients[libserver->id_client].champion->name);
+}
+
+void	add_champ_client(t_libserver *libserver, char *str)
+{
+  t_list	*cur;
+  t_champion	*tmp;
+  char		*class;
+
+  class = malloc(128 * sizeof(*class));
+  cur = libserver->world->champions;
+  while (cur)
+    {
+      tmp = (t_champion *) cur->data;
+      if (strcmp(tmp->name, str) == 0)
+	{
+	  libserver->clients[libserver->id_client].champion =
+	    malloc(sizeof(t_champion));
+	  libserver->clients[libserver->id_client].champion = tmp;
+	}
+      cur = cur->next;
+    }
+  aff_carac_player(libserver);
+}
+
+char		*generate_trame_start(t_libserver *libserver)
+{
+  char		*trame;
+  t_list	*cur;
+  t_champion	*tmp;
+  char		*class;
+
+  trame = malloc(4096 * sizeof(*trame));
+  class = malloc(128 * sizeof(*class));
+  memset(trame, 0, 4096);
+  strcpy(trame, "OK NB:0");
+  cur = libserver->world->champions;
+  while (cur)
+    {
+      memset(class, 0, 127);
+      tmp = (t_champion *) cur->data;
+      if (tmp->class == 0)
+	strcpy(class, "WARRIOR");
+      else if (tmp->class == 1)
+	strcpy(class, "WIZARD");
+      else
+	strcpy(class, "TEMPLAR");
+      sprintf(trame, "%s CHAMP:NAME=%s,TYPE=%s,HP=%d,\
+SPE=%d,SPEED=%d,DEG=%d,WEAPON=%s,ARMOR=%s", trame, tmp->name,
+	      class, tmp->hp, tmp->mana, tmp->speed, tmp->damage,
+	      tmp->weapon, tmp->armor);
+      cur = cur->next;
+    }
+  return (trame);
+}
+
 void	add_client(int	id, t_libserver *libserver)
 {
+  char	*trame;
+  char	*ret;
+
+  ret = malloc(128 * sizeof(*ret));
+  memset(ret, 0, 128);
   libserver->clients[libserver->id_client].id = id;
+  libserver->clients[libserver->id_client].active = 1;
   libserver->clients[libserver->id_client].idsock = libserver->id_client;
+  libserver->clients[libserver->id_client].fd =
+    libserver->fds[libserver->id_client];
+  trame = generate_trame_start(libserver);
+  printf("Trame envoyée %s\n", trame);
+  write(libserver->clients[libserver->id_client].fd, trame, strlen(trame));
+  printf("Avant\n");
+  read(libserver->clients[libserver->id_client].fd, ret, 128);
+  printf("Retour : %s\n", ret);
+  add_champ_client(libserver, ret);
 }
 
 int	id_exist(int id, t_libserver *libserver)
@@ -59,9 +147,9 @@ int	id_exist(int id, t_libserver *libserver)
   int	i;
 
   i = 0;
-  while (i < 6)
+  while (i < 7)
     {
-      if (libserver->clients[i].id == id)
+      if (libserver->clients[i].id == id && libserver->clients[i].active == 1)
 	return (1);
       i++;
     }
@@ -82,17 +170,17 @@ void	check_new_client(t_libserver *libserver)
 	  inet_ntop(AF_INET, &(libserver->cli_addr[0].sin_addr.s_addr),
 		    addr_client, INET_ADDRSTRLEN);
 	  printf("Nouveau client : %s\n", addr_client);
-	  write(libserver->newsockfd, "Bienvenue sur le serveur !\n",
-		strlen("Bienvenue sur le serveur !\n") + 1);
-	  add_client(libserver->cli_addr[0].sin_addr.s_addr, libserver);
+	  write(libserver->newsockfd, "Bienvenue sur le serveur Bertom!\n",
+		strlen("Bienvenue sur le serveur Bertom!\n") + 1);
 	  libserver->fds[libserver->id_client] = libserver->newsockfd;
+	  add_client(libserver->cli_addr[0].sin_addr.s_addr, libserver);
 	  libserver->id_client++;
 	}
     }
   free(addr_client);
 }
 
-int	server(t_world *world)
+int	server(t_world *world, int port)
 {
   t_libserver	*libserver;
   fd_set	rfds;
@@ -101,7 +189,7 @@ int	server(t_world *world)
   int		max;
 
   libserver = malloc(sizeof(*libserver));
-  init_lib(libserver, 33668);
+  init_lib(libserver, port);
   libserver->world = world;
   listen(libserver->sockfd, 5);
   printf("Waiting connection on port %d ...\n", libserver->portno);
@@ -144,8 +232,10 @@ int	server(t_world *world)
 		      if (libserver->n < 0)
 			print_error("Socket Read error");
 		      if (libserver->buffer[0] != 0)
-			parse_cmd(libserver->buffer, libserver->fds[i], libserver, world);
-		      /* parse_line(libserver->buffer, libserver->fds[i], libserver); */
+			{
+			  libserver->current_id_fd = i;
+			  parse_cmd(libserver->buffer, libserver->fds[i], libserver, world);
+			}
 		    }
 		  i++;
 		}
