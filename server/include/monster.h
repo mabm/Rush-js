@@ -5,7 +5,7 @@
 ** Login   <fourri_l@epitech.net>
 ** 
 ** Started on  Sat May 10 13:40:45 2014 Laurent Fourrier
-** Last update Sat May 10 20:39:54 2014 Jeremy Mediavilla
+** Last update Mon May 12 11:53:40 2014 Joris Bertomeu
 */
 
 #ifndef MONSTER_H_
@@ -22,6 +22,7 @@ typedef struct	s_monsters
   int		damage;
   char		*armor;
   char		*weapon;
+  int		id;
 }		t_monsters;
 
 #endif

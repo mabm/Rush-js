@@ -5,13 +5,13 @@
 ** Login   <fouhet_k@epitech.net>
 ** 
 ** Started on  Sat May 10 11:43:57 2014 Kevin Fouhety
-** Last update Sun May 11 10:52:43 2014 
+** Last update Mon May 12 00:02:11 2014 Joris Bertomeu
 */
 
 #ifndef STRUCT_CLIENT_H_
 # define STRUCT_CLIENT_H_
 
-typedef struct s_champ
+typedef struct		s_champ
 {
   char			*name;
   char			*class;
@@ -21,7 +21,7 @@ typedef struct s_champ
   int			dmg;
   char			*weapon;
   char			*armor;
-}t_champ;
+}			t_champ;
 
 typedef struct s_list_champ
 {

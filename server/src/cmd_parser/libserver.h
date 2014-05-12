@@ -5,7 +5,7 @@
 ** Login   <jobertomeu@epitech.net>
 ** 
 ** Started on  Sat May 10 17:04:26 2014 Joris Bertomeu
-** Last update Sun May 11 19:24:11 2014 Laurent Fourrier
+** Last update Mon May 12 02:26:20 2014 Joris Bertomeu
 */
 
 #ifndef LIBSERVER_H_
@@ -21,13 +21,17 @@
 # include <sys/time.h>
 # include <sys/types.h>
 # include <unistd.h>
-# include "world.h"
+#include "../../include/world.h"
+#include "../../include/champion.h"
 
 typedef struct s_clients t_clients;
 struct s_clients
 {
+  int	active;
   int	id;
   int	idsock;
+  int	fd;
+  t_champion	*champion;
 };
 
 typedef struct s_libserver t_libserver;
@@ -46,6 +50,7 @@ struct s_libserver
   t_clients		clients[6];
   int			fds[6];
   int			fdtmp;
+  int			current_id_fd;
 };
 
 #endif /* LIBSERVER_H_ */
