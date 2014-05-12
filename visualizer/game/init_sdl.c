@@ -5,7 +5,7 @@
 ** Login   <charvo_a@epitech.net>
 **
 ** Started on  Sun May 11 22:36:59 2014 Nicolas Charvoz
-** Last update Sun May 11 23:50:17 2014 Nicolas Charvoz
+** Last update Mon May 12 14:30:57 2014 Nicolas Charvoz
 */
 
 #include "./hdr/game.h"
@@ -38,7 +38,7 @@ void	img_player(t_player *p, t_champ *c)
 void	img_monster(t_monster *m)
 {
   m->skin = NULL;
-  m->skin = IMG_Load("/tmp/sprites/monster4.png");
+  m->skin = IMG_Load("../res/skins/dragon.png");
   m->hp = NULL;
   m->hp = IMG_Load("/tmp/sprites/blood_100.png");
 }
