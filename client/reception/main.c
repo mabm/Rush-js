@@ -5,7 +5,7 @@
 ** Login   <cruvei_t@epitech.net>
 ** 
 ** Started on  Sun May 11 15:18:12 2014 
-** Last update Mon May 12 12:21:39 2014 Joris Bertomeu
+** Last update Thu May 15 22:03:18 2014 Geoffrey Merran
 */
 
 #include <pthread.h>

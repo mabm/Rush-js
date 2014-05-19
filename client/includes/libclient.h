@@ -5,7 +5,7 @@
 ** Login   <jobertomeu@epitech.net>
 ** 
 ** Started on  Sat May 10 15:44:42 2014 Joris Bertomeu
-** Last update Sat May 10 16:49:58 2014 Joris Bertomeu
+** Last update Thu May 15 21:41:40 2014 Geoffrey Merran
 */
 
 #ifndef LIBCLIENT_H_
@@ -14,10 +14,12 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
+# include <unistd.h>
 # include <errno.h>
 # include <signal.h>
 # include <netdb.h>
 # include <netinet/in.h>
+# include <arpa/inet.h>
 # include <sys/socket.h>
 
 typedef struct s_libclient t_libclient;

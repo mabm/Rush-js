@@ -5,7 +5,7 @@
 ** Login   <valer@epitech.net>
 **
 ** Started on  Fri May  9 22:31:21 2014 Valerian Polizzi
-** Last update Sun May 11 19:37:39 2014 Joris Bertomeu
+** Last update Thu May 15 21:45:10 2014 Geoffrey Merran
 */
 
 #include <stdio.h>
@@ -60,7 +60,7 @@ int	       parse_cmd(char *cmd, int id, t_libserver *libserver, t_world *world)
   tab[1] = strdup("list_team");
   tab[2] = strdup("attack");
   tab[3] = strdup("attack_spe");
-  tab[4] = strdup("who"); 
+  tab[4] = strdup("who");
   tab[5] = strdup("bye");
   tab[6] = NULL;
   while (i < 7)

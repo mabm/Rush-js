@@ -64,7 +64,6 @@ void		*exec_thread(void *data)
       write(slib->to_server_socket, buff, strlen(buff));
       memset(slib->buffer, 0, 4096);
       read(slib->to_server_socket, slib->buffer, 4096);
-      
       printf("Reply > %s\n", slib->buffer);
     }
   while (1)
